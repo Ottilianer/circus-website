@@ -1,0 +1,25 @@
+{% load static %}
+
+<section id="newspaper" class="mb-12" x-data="{ showMore: false }">
+    <h2 class="text-3xl font-bold mb-4">Der Flügelschlag</h2>
+    <div class="bg-white p-6 rounded-lg shadow">
+        <div class="md:flex">
+            <img src="{% static 'images/placeholder.jpg' %}" alt="Aktuelle Ausgabe"
+                class="w-full md:w-64 h-48 object-cover rounded-md mb-4 md:mb-0 md:mr-6">
+            <div>
+                <h3 class="text-2xl font-semibold mb-4">Aktuelle Ausgabe: Mai 2023</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Der Flügelschlag ist vom Webteam abhängig</li>
+                    <li>Alea iacta est!</li>
+                    <li>Interview mit Annnnnnnnnddddddiiiiiiiiiiiiiiiiiiiiiiiiii</li>
+                    <li>Fotostrecke: Ein Tag im Leben eines Ottilianers</li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center mt-6">
+            <a href="" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">
+                Mehr anzeigen</span>
+            </a>
+        </div>
+    </div>
+</section>

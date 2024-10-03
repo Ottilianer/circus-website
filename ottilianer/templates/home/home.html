@@ -1,1 +1,14 @@
 {% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="flex flexcol justify-center items-center">
+    <main class="container mx-auto mt-8 px-4">
+        <c-intro />
+        <c-about />
+        <c-random-ags />
+        <c-latest-diaries />
+        <c-latest-newspaper />
+    </main>
+</div>
+{% endblock content %}
