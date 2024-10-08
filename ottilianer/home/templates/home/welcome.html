@@ -1,0 +1,11 @@
+{% load wagtailcore_tags %}
+
+<section id="welcome" class="mb-12">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div class="welcome">
+            {{ page.welcome|richtext }}
+        </div>
+        <img src="https://www.klosterportal.org/wp-content/uploads/2021/07/A738787-1-2500-Suedansicht-.jpg"
+            alt="Schulgebäude" class="w-full h-auto rounded-lg shadow-md">
+    </div>
+</section>

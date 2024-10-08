@@ -1,0 +1,29 @@
+{% load static %}
+{% load wagtailimages_tags %}
+
+{% if random_diarypages.all %}
+<section id="diary" class="mb-12">
+    <h2 class="text-3xl font-bold mb-4">Schul-Tagebuch</h2>
+    <div class="space-y-4">
+        {% for diary in random_diarypages %}
+        <a href="#" class="block bg-white p-4 rounded-lg shadow hover:shadow-xl transition duration-300">
+            <div class="md:flex">
+                <div class="inline w-full md:w-48 h-32 object-cover rounded-md mb-4 md:mb-0 md:mr-4">
+                    {% image diary.image original %}
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">{{ diary.date }} - {{ diary.title }}</h3>
+                    <p>{{ diary.intro }}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+
+    </div>
+    <div class="text-center mt-6">
+        <a href="" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">
+            Alle anzeigen</span>
+        </a>
+    </div>
+</section>
+{% endif %}

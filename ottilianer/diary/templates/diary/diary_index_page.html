@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block content %}
+<h1>{{ page.title }}</h1>
+<div class="intro">
+    {{ page.intro|richtext }}
+</div>
+
+<h2>Alle Diary-Einträge</h2>
+<ul>
+    {% for diary in diarypages %}
+    <li>
+        <a href="{{ diary.url }}">{{ diary.title }}</a>
+        <small>{{ diary.date }}</small>
+        <p>{{ diary.intro }}</p>
+    </li>
+    {% empty %}
+    <li>Keine Diary-Einträge vorhanden.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -138,4 +138,4 @@ GitHub.sublime-settings
 .history
 
 # Poetry
-poetry.lock
+./poetry.lock

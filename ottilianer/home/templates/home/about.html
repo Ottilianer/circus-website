@@ -1,0 +1,14 @@
+{% load static %}
+{% load wagtailcore_tags %}
+
+<section id="about" class="mb-12 bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class="md:flex">
+        <div class="md:w-1/2 p-8">
+            {{ page.about|richtext }}
+        </div>
+        <div class="md:w-1/2">
+            <img src="https://www.rmg-ottilien.de/wp-content/uploads/2022/11/IMG_0008.jpg" alt="Schüler im Unterricht"
+                class="w-full h-full object-cover">
+        </div>
+    </div>
+</section>
