@@ -1,141 +1,119 @@
-# Django #
+# Created by https://www.toptal.com/developers/gitignore/api/nuxtjs
+# Edit at https://www.toptal.com/developers/gitignore?templates=nuxtjs
+
+### NuxtJS ###
+# Generated dirs
+dist
+.nuxt
+.nuxt-*
+.output
+.gen
+
+# Node dependencies
+node_modules
+
+# System files
 *.log
-*.pot
-*.pyc
-__pycache__
-db.sqlite3
-media
 
-# Backup files # 
-*.bak 
+# End of https://www.toptal.com/developers/gitignore/api/nuxtjs
 
-# If you are using PyCharm # 
-# User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+# Created by https://www.toptal.com/developers/gitignore/api/strapi
+# Edit at https://www.toptal.com/developers/gitignore?templates=strapi
 
-# AWS User-specific
-.idea/**/aws.xml
+### Strapi ###
 
-# Generated files
-.idea/**/contentModel.xml
+.env
+license.txt
+exports
+*.cache
+build
+.strapi-updater.json
 
-# Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+############################
+# OS X
 
-# Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+._*
 
-# File-based project format
-*.iws
+# Linux
 
-# IntelliJ
-out/
+*~
 
-# JIRA plugin
-atlassian-ide-plugin.xml
 
-# Python # 
-*.py[cod] 
-*$py.class 
+# Windows
 
-# Distribution / packaging 
-.Python build/ 
-develop-eggs/ 
-dist/ 
-downloads/ 
-eggs/ 
-.eggs/ 
-lib/ 
-lib64/ 
-parts/ 
-sdist/ 
-var/ 
-wheels/ 
-*.whl
-*.egg-info/ 
-.installed.cfg 
-*.egg 
-*.manifest 
-*.spec 
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
 
-# Installer logs 
-pip-log.txt 
-pip-delete-this-directory.txt 
 
-# Unit test / coverage reports 
-htmlcov/ 
-.tox/ 
-.coverage 
-.coverage.* 
-.cache 
-.pytest_cache/ 
-nosetests.xml 
-coverage.xml 
-*.cover 
-.hypothesis/ 
+# Packages
 
-# Jupyter Notebook 
-.ipynb_checkpoints 
+*.7z
+*.csv
+*.dat
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.seed
+*.so
+*.swo
+*.swp
+*.swn
+*.swm
+*.out
+*.pid
 
-# pyenv 
-.python-version 
+# Logs and databases
 
-# celery 
-celerybeat-schedule.* 
+.tmp
+*.log
+*.sql
+*.sqlite
+*.sqlite3
 
-# SageMath parsed files 
-*.sage.py 
 
-# Environments 
-.env 
-.venv 
-env/ 
-venv/ 
-ENV/ 
-env.bak/ 
-venv.bak/ 
+# Misc.
 
-# mkdocs documentation 
-/site 
+*#
+ssl
+.idea
+nbproject
+public/uploads/*
+!public/uploads/.gitkeep
 
-# mypy 
-.mypy_cache/ 
+# Node.js
 
-# Sublime Text # 
-*.tmlanguage.cache 
-*.tmPreferences.cache 
-*.stTheme.cache 
-*.sublime-workspace 
-*.sublime-project 
+lib-cov
+lcov.info
+pids
+logs
+results
+node_modules
+.node_history
 
-# sftp configuration file 
-sftp-config.json 
+# Tests
 
-# Package control specific files Package 
-Control.last-run 
-Control.ca-list 
-Control.ca-bundle 
-Control.system-ca-bundle 
-GitHub.sublime-settings 
+testApp
+coverage
 
-# Visual Studio Code # 
-.vscode/* 
-!.vscode/settings.json 
-!.vscode/tasks.json 
-!.vscode/launch.json 
-!.vscode/extensions.json 
-.history
-
-# Poetry
-./poetry.lock
+# End of https://www.toptal.com/developers/gitignore/api/strapi
