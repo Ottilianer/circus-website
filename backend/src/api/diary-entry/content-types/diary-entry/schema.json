@@ -4,7 +4,8 @@
   "info": {
     "singularName": "diary-entry",
     "pluralName": "diary-entries",
-    "displayName": "Diary Entry"
+    "displayName": "Diary Entry",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,7 +14,7 @@
   "attributes": {
     "Entry": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "ottilianer.article-2"
     }
   }

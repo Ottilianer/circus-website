@@ -611,12 +611,13 @@ export interface ApiDiaryEntryDiaryEntry extends Struct.CollectionTypeSchema {
     singularName: 'diary-entry';
     pluralName: 'diary-entries';
     displayName: 'Diary Entry';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Entry: Schema.Attribute.Component<'ottilianer.article-2', true>;
+    Entry: Schema.Attribute.Component<'ottilianer.article-2', false>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
