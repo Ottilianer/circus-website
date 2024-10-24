@@ -665,6 +665,39 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiNewspaperNewspaper extends Struct.CollectionTypeSchema {
+  collectionName: 'newspapers';
+  info: {
+    singularName: 'newspaper';
+    pluralName: 'newspapers';
+    displayName: 'Newspaper';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    date: Schema.Attribute.Date & Schema.Attribute.Required;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    foreword: Schema.Attribute.RichText;
+    Article: Schema.Attribute.Component<'ottilianer.article-2', true> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::newspaper.newspaper'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -1052,6 +1085,7 @@ declare module '@strapi/strapi' {
       'api::admission-timeslot.admission-timeslot': ApiAdmissionTimeslotAdmissionTimeslot;
       'api::diary-entry.diary-entry': ApiDiaryEntryDiaryEntry;
       'api::global.global': ApiGlobalGlobal;
+      'api::newspaper.newspaper': ApiNewspaperNewspaper;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;
