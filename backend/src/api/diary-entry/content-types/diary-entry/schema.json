@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "diary_entries",
+  "info": {
+    "singularName": "diary-entry",
+    "pluralName": "diary-entries",
+    "displayName": "Diary Entry"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Entry": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ottilianer.article-2"
+    }
+  }
+}

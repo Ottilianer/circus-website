@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "admission_entries",
+  "info": {
+    "singularName": "admission-entry",
+    "pluralName": "admission-entries",
+    "displayName": "Admission Entry",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "telephone": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "timeslot": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::admission-timeslot.admission-timeslot"
+    }
+  }
+}
