@@ -1,0 +1,68 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Astro",
+      "type": "shell",
+      "command": "bun run dev",
+      "group": "build",
+      "isBackground": true,
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "problemMatcher": [
+        {
+          "owner": "custom",
+          "pattern": [
+            {
+              "regexp": ".",
+              "file": 1,
+              "location": 2,
+              "message": 3
+            }
+          ],
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "starting Astro...",
+            "endsPattern": "ready"
+          }
+        }
+      ],
+      "detail": "Starts the Astro development server"
+    },
+    {
+      "label": "Start Strapi",
+      "type": "shell",
+      "command": "bun run develop",
+      "group": "build",
+      "isBackground": true,
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "problemMatcher": [
+        {
+          "owner": "custom",
+          "pattern": [
+            {
+              "regexp": ".",
+              "file": 1,
+              "location": 2,
+              "message": 3
+            }
+          ],
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "starting Strapi...",
+            "endsPattern": "Server now running"
+          }
+        }
+      ],
+      "detail": "Starts the Strapi development server"
+    },
+    {
+      "label": "Start All",
+      "dependsOn": ["Start Astro", "Start Strapi"],
+      "detail": "Starts both Astro and Strapi"
+    }
+  ]
+}
