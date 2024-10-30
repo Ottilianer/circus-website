@@ -1,5 +1,25 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
+export interface OttilianerArticle2 extends Struct.ComponentSchema {
+  collectionName: 'components_ottilianer_article_2s';
+  info: {
+    displayName: 'Article';
+    icon: 'cursor';
+    description: '';
+  };
+  attributes: {
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    date: Schema.Attribute.Date & Schema.Attribute.Required;
+    author: Schema.Attribute.String;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedSlider extends Struct.ComponentSchema {
   collectionName: 'components_shared_sliders';
   info: {
@@ -9,6 +29,18 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
   attributes: {
     files: Schema.Attribute.Media<'images', true>;
+  };
+}
+
+export interface SharedQuote extends Struct.ComponentSchema {
+  collectionName: 'components_shared_quotes';
+  info: {
+    displayName: 'Quote';
+    icon: 'indent';
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    body: Schema.Attribute.Text;
   };
 }
 
@@ -39,18 +71,6 @@ export interface SharedRichText extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedQuote extends Struct.ComponentSchema {
-  collectionName: 'components_shared_quotes';
-  info: {
-    displayName: 'Quote';
-    icon: 'indent';
-  };
-  attributes: {
-    title: Schema.Attribute.String;
-    body: Schema.Attribute.Text;
-  };
-}
-
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -62,35 +82,15 @@ export interface SharedMedia extends Struct.ComponentSchema {
   };
 }
 
-export interface OttilianerArticle2 extends Struct.ComponentSchema {
-  collectionName: 'components_ottilianer_article_2s';
-  info: {
-    displayName: 'Article';
-    icon: 'cursor';
-    description: '';
-  };
-  attributes: {
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    date: Schema.Attribute.Date & Schema.Attribute.Required;
-    author: Schema.Attribute.String;
-    description: Schema.Attribute.Text &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 250;
-      }>;
-    content: Schema.Attribute.RichText & Schema.Attribute.Required;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'ottilianer.article-2': OttilianerArticle2;
       'shared.slider': SharedSlider;
+      'shared.quote': SharedQuote;
       'shared.seo': SharedSeo;
       'shared.rich-text': SharedRichText;
-      'shared.quote': SharedQuote;
       'shared.media': SharedMedia;
-      'ottilianer.article-2': OttilianerArticle2;
     }
   }
 }

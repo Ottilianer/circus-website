@@ -495,6 +495,35 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiDiaryEntryDiaryEntry extends Struct.CollectionTypeSchema {
+  collectionName: 'diary_entries';
+  info: {
+    singularName: 'diary-entry';
+    pluralName: 'diary-entries';
+    displayName: 'Diary Entry';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Entry: Schema.Attribute.Component<'ottilianer.article-2', false>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::diary-entry.diary-entry'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   collectionName: 'abouts';
   info: {
@@ -567,73 +596,6 @@ export interface ApiAdmissionEntryAdmissionEntry
   };
 }
 
-export interface ApiAdmissionTimeslotAdmissionTimeslot
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'admission_timeslots';
-  info: {
-    singularName: 'admission-timeslot';
-    pluralName: 'admission-timeslots';
-    displayName: 'Admission Timeslot';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    startTime: Schema.Attribute.DateTime &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    endTime: Schema.Attribute.DateTime &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    maxTickets: Schema.Attribute.BigInteger &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
-      Schema.Attribute.DefaultTo<'4'>;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::admission-timeslot.admission-timeslot'
-    > &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiDiaryEntryDiaryEntry extends Struct.CollectionTypeSchema {
-  collectionName: 'diary_entries';
-  info: {
-    singularName: 'diary-entry';
-    pluralName: 'diary-entries';
-    displayName: 'Diary Entry';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Entry: Schema.Attribute.Component<'ottilianer.article-2', false>;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::diary-entry.diary-entry'
-    > &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -694,6 +656,44 @@ export interface ApiNewspaperNewspaper extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::newspaper.newspaper'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiAdmissionTimeslotAdmissionTimeslot
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'admission_timeslots';
+  info: {
+    singularName: 'admission-timeslot';
+    pluralName: 'admission-timeslots';
+    displayName: 'Admission Timeslot';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    startTime: Schema.Attribute.DateTime &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    endTime: Schema.Attribute.DateTime &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    maxTickets: Schema.Attribute.BigInteger &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<'4'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::admission-timeslot.admission-timeslot'
     > &
       Schema.Attribute.Private;
   };
@@ -1081,12 +1081,12 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::diary-entry.diary-entry': ApiDiaryEntryDiaryEntry;
       'api::about.about': ApiAboutAbout;
       'api::admission-entry.admission-entry': ApiAdmissionEntryAdmissionEntry;
-      'api::admission-timeslot.admission-timeslot': ApiAdmissionTimeslotAdmissionTimeslot;
-      'api::diary-entry.diary-entry': ApiDiaryEntryDiaryEntry;
       'api::global.global': ApiGlobalGlobal;
       'api::newspaper.newspaper': ApiNewspaperNewspaper;
+      'api::admission-timeslot.admission-timeslot': ApiAdmissionTimeslotAdmissionTimeslot;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;
