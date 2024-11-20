@@ -1,16 +1,28 @@
 import PocketBase from "pocketbase";
+import usePocketBase from "../pocketbase";
 
 export default defineEventHandler(async (event) => {
-  const pocketBase = new PocketBase("http://localhost:8090");
   try {
-    const authData = await pocketBase.admins.authWithPassword(
-      "onpu7ffcyx5n1dh",
-      "1234567890"
-    );
+    const pb = await usePocketBase();
+
+    const identifier = getQuery(event).identifier;
+
+    console.log("identifier", identifier);
+
+    const records = await pb.collection("content").getList(1, 1, {
+      filter: `identifier = "${identifier}"`,
+    });
+
+    // 5. Return the records
+    return {
+      success: true,
+      data: records.items.at(0),
+    };
   } catch (error) {
-    console.error(error);
+    // Handle errors
+    return createError({
+      statusCode: error.status || 500,
+      message: error.message || "An error occurred",
+    });
   }
-  return {
-    hello: "JSON.stringify(content)",
-  };
 });

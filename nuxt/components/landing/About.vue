@@ -17,6 +17,7 @@
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto
           corporis maiores rerum eos perspiciatis impedit quas voluptatum?
         </p>
+        <div v-html="data?.data.content"></div>
       </div>
       <div class="grid grid-cols-2 gap-4 mt-8">
         <img
@@ -31,7 +32,12 @@
         />
       </div>
     </div>
+    {{ data }}
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { data } = await useAsyncData("about", () =>
+  $fetch("/api/content?identifier=landing_about")
+);
+</script>

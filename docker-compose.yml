@@ -11,6 +11,8 @@ services:
       - "./pocketbase-data:/pb/pb_data"
 
   nuxt:
+    env_file:
+      - example.env
     image: oven/bun:latest
     working_dir: /app
     command: ["bun", "run", "dev", "--host", "0.0.0.0", "--port", "3000"]
@@ -24,6 +26,3 @@ services:
       MEDIA_ADDRESS: http://localhost:1337
       API_ADDRESS: http://strapi:1337
       API_KEY: "ab0b8218bb5cdbf724a574a692e2a0da4e2eb370a88efb55fe565bc6e13ba3145a5369f3956d3aa52a0050ac2ed3903799270ad33e63c906cfaf4e06519dee63f034635c78bfb939ede6cb927a6a56e3c5157be2d15e13b82101c47f657adf4b0dbee3a1ecadd4abcbc06120d684211d345c7dabb12b0d9f40c2f89ab4b64521"
-
-volumes:
-  postgres_data:
