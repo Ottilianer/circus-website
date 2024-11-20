@@ -7,10 +7,10 @@
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">
           <span class="sr-only">Ottilianer</span>
-          <img
+          <NuxtImg
             class="h-8 w-auto"
-            src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-            alt=""
+            src="/svg/logo.svg"
+            alt="Ottilianer Logo"
           />
         </a>
       </div>
@@ -21,7 +21,7 @@
           @click="mobileMenuOpen = true"
         >
           <span class="sr-only">Open main menu</span>
-          <BarChart class="size-6" aria-hidden="true" />
+          <Menu class="size-6" aria-hidden="true" />
         </button>
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-12">
@@ -51,7 +51,7 @@
                 class="mx-auto grid max-w-7xl grid-cols-4 gap-x-4 px-6 py-10 lg:px-8 xl:gap-x-8"
               >
                 <div
-                  v-for="item in products"
+                  v-for="item in ottilianerPages"
                   :key="item.name"
                   class="group relative rounded-lg p-6 text-sm/6 hover:bg-gray-50"
                 >
@@ -60,7 +60,7 @@
                   >
                     <component
                       :is="item.icon"
-                      class="size-6 text-gray-600 group-hover:text-indigo-600"
+                      class="size-6 text-gray-600 group-hover:text-primary"
                       aria-hidden="true"
                     />
                   </div>
@@ -72,27 +72,6 @@
                     <span class="absolute inset-0" />
                   </a>
                   <p class="mt-1 text-gray-600">{{ item.description }}</p>
-                </div>
-              </div>
-              <div class="bg-gray-50">
-                <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                  <div
-                    class="grid grid-cols-3 divide-x divide-gray-900/5 border-x border-gray-900/5"
-                  >
-                    <a
-                      v-for="item in callsToAction"
-                      :key="item.name"
-                      :href="item.href"
-                      class="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
-                    >
-                      <component
-                        :is="item.icon"
-                        class="size-5 flex-none text-gray-400"
-                        aria-hidden="true"
-                      />
-                      {{ item.name }}
-                    </a>
-                  </div>
                 </div>
               </div>
             </PopoverPanel>
@@ -121,11 +100,11 @@
       >
         <div class="flex items-center justify-between">
           <a href="#" class="-m-1.5 p-1.5">
-            <span class="sr-only">Your Company</span>
-            <img
+            <span class="sr-only">Ottilianer</span>
+            <NuxtImg
               class="h-8 w-auto"
-              src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
+              src="/svg/logo.svg"
+              alt="Ottilianer Logo"
             />
           </a>
           <button
@@ -144,7 +123,7 @@
                 <DisclosureButton
                   class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Product
+                  Ottilianer
                   <ChevronDownIcon
                     :class="[open ? 'rotate-180' : '', 'size-5 flex-none']"
                     aria-hidden="true"
@@ -152,7 +131,7 @@
                 </DisclosureButton>
                 <DisclosurePanel class="mt-2 space-y-2">
                   <DisclosureButton
-                    v-for="item in [...products, ...callsToAction]"
+                    v-for="item in [...ottilianerPages]"
                     :key="item.name"
                     as="a"
                     :href="item.href"
@@ -164,24 +143,17 @@
               <a
                 href="#"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >Features</a
-              >
-              <a
-                href="#"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >Marketplace</a
-              >
-              <a
-                href="#"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >Company</a
-              >
-            </div>
-            <div class="py-6">
-              <a
-                href="#"
-                class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >Circus</a
+              >
+              <a
+                href="#"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                >Neuaufnahme</a
+              >
+              <a
+                href="#"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                >Praktikumsbörse</a
               >
             </div>
           </div>
@@ -205,47 +177,40 @@ import {
   PopoverPanel,
 } from "@headlessui/vue";
 import {
-  BarChart,
-  ChartPieIcon,
-  Footprints,
-  Fingerprint,
-  PlusIcon,
+  Menu,
   X,
-  RollerCoaster,
-  RectangleHorizontal,
+  ChevronDownIcon,
+  Newspaper,
+  Headphones,
+  Pickaxe,
+  Handshake,
 } from "lucide-vue-next";
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "lucide-vue-next";
 
-const products = [
+const ottilianerPages = [
   {
-    name: "Analytics",
-    description: "Get a better understanding where your traffic is coming from",
+    name: "Tagebuch",
+    description: "Geschrieben von Ottilianern für Ottilianer",
     href: "#",
-    icon: ChartPieIcon,
+    icon: Newspaper,
   },
   {
-    name: "Engagement",
-    description: "Speak directly to your customers with our engagement tool",
+    name: "Arbeitsgemeinschaften",
+    description: "Auch nach der Schule kann man bei uns noch viel erleben",
     href: "#",
-    icon: Footprints,
+    icon: Pickaxe,
   },
   {
-    name: "Security",
-    description: "Your customers’ data will be safe and secure",
+    name: "OhioCast",
+    description: "Unsere Schülerinnen und Schüler berichten",
     href: "#",
-    icon: Fingerprint,
+    icon: Headphones,
   },
   {
-    name: "Integrations",
-    description: "Your customers’ data will be safe and secure",
+    name: "SMV",
+    description: "Aktuelles aus unserer Schülermitverantwortung",
     href: "#",
-    icon: PlusIcon,
+    icon: Handshake,
   },
-];
-const callsToAction = [
-  { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-  { name: "Contact sales", href: "#", icon: PhoneIcon },
-  { name: "View all products", href: "#", icon: RectangleHorizontal },
 ];
 
 const mobileMenuOpen = ref(false);

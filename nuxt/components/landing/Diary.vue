@@ -8,15 +8,15 @@
           Unser Tagebuch
         </h2>
         <p class="mb-4">
-          Discover the latest insights and updates from our team. We cover a
-          wide range of topics to keep you informed and inspired.
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit
+          eaque animi numquam non laborum doloribus
         </p>
       </div>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid md:grid-cols-2 gap-4">
         <div
           v-for="(post, index) in blogPosts"
           :key="index"
-          class="bg-white shadow rounded-lg overflow-hidden"
+          class="bg-white shadow rounded-lg overflow-hidden lg:min-w-96"
         >
           <img
             :src="post.image"
@@ -31,45 +31,10 @@
               {{ post.title }}
             </h3>
             <div class="flex items-center text-sm text-gray-600">
-              <span class="flex items-center mr-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4 mr-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                  />
-                </svg>
-                {{ post.views }}
-              </span>
-              <span class="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4 mr-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                  />
-                </svg>
-                {{ post.comments }}
+              <span
+                class="flex items-center mr-4 px-2 py-0.5 bg-primary/50 border-primary border rounded-full"
+              >
+                #Flügelschlag
               </span>
             </div>
           </div>
@@ -84,30 +49,30 @@ import { ref } from "vue";
 
 const blogPosts = ref([
   {
-    title: "Finding best places to visit in California",
+    title: "Lorem ipsum dolor sit amet",
     date: "16 July 2023",
     image: "https://loremflickr.com/320/240?random=1",
     views: 35,
     comments: 15,
   },
   {
-    title: "Top 10 restaurants in New York City",
+    title: "Lorem ipsum dolor sit amet",
     date: "22 July 2023",
     image: "https://loremflickr.com/320/240?random=2",
     views: 42,
     comments: 23,
   },
   {
-    title: "Top 10 restaurants in New York City",
+    title: "Lorem ipsum dolor sit amet",
     date: "22 July 2023",
-    image: "https://loremflickr.com/320/240?random=2",
+    image: "https://loremflickr.com/320/240?random=3",
     views: 42,
     comments: 23,
   },
   {
-    title: "Top 10 restaurants in New York City",
+    title: "Lorem ipsum dolor sit amet",
     date: "22 July 2023",
-    image: "https://loremflickr.com/320/240?random=2",
+    image: "https://loremflickr.com/320/240?random=4",
     views: 42,
     comments: 23,
   },

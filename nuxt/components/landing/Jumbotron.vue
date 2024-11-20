@@ -18,8 +18,8 @@
 <style lang="css" scoped>
 .image-container {
   background-image: url("https://www.klosterportal.org/wp-content/uploads/2021/07/A738787-1-2500-Suedansicht-.jpg");
-  background-size: cover, contain; /* Passe Größe für jedes Bild an */
-  background-position: center, top; /* Position für jedes Bild */
-  background-repeat: no-repeat, no-repeat; /* Wiederholungsmodus für jedes Bild */
+  background-size: cover, contain;
+  background-position: center, top;
+  background-repeat: no-repeat, no-repeat;
 }
 </style>

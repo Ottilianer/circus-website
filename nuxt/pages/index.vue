@@ -1,5 +1,8 @@
 <template>
-  <LayoutNavBar /><LandingJumbotron /><LandingAbout /><LandingCircus /><LandingDiary />
+  <LandingJumbotron />
+  <LandingAbout />
   <hr />
-  <LayoutFooter />
+  <LandingCircus />
+  <hr />
+  <LandingDiary />
 </template>
