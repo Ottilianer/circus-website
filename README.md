@@ -9,36 +9,43 @@ Please make sure you have installed the following software:
 - [Docker](https://www.docker.com)
 - [Docker Compose](https://docs.docker.com/compose/)
 
-
-### Granting Permissions
+### Clone the Repository
 
 ```sh
-sudo chown -R $USER:$USER /path/to/ottilianer-v2
+git clone git@github.com:Ottilianer/ottilianer-v2.git
 ```
 
-### Installing the Backend
+### Change the Directory
 
 ```sh
-cd /path/to/ottilianer-v2/backend
-bun install
+cd ottilianer-v2
 ```
 
-### Installing the Frontend
+### Install the Frontend
 
 ```sh
-cd /path/to/ottilianer-v2/frontend
+cd frontend
 bun install
 ```
 
 ### Starting the Containers
 
 ```sh
-docker-compose up --build
+docker compose -f docker-compose.dev.yml up
 ```
+
+## Permission Denied Error
+
+![Permission Denied Error](./readme/permission-denied-error.png)
+
+It's possible that you receive a error like shown above when installing new npm modules. This error occurs, because Docker manages the environment, which means, that the `nuxt/.nuxt` folder belongs to the root user (You don't have to understand this). All you have to know is that you should run
+
+```sh
+sudo chmod -R 777 .
+```
+
+in the workspace **after stopping the containers** to fix the error temporarily.
 
 ## Any Questions?
 
-If you have any questions, please contact me (Leo Gall) via Teams (<leo.gall@rmg-ottilien.de>), E-Mail (<gall.dev@proton.me>) or by phone (0170 591 5654). 
-
-
-sudo chown -R $USER:$USER /home/leo/development/ottilianer/ottilianer-v2/backend
+If you have any questions, please contact me (Leo Gall) via Teams (<leo.gall@rmg-ottilien.de>), E-Mail (<gall.dev@proton.me>) or by phone (0170 591 5654).

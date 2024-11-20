@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
+    "@nuxt/image": "^1.8.1",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "lucide-vue-next": "^0.460.0",
     "nuxt": "^3.13.2",
