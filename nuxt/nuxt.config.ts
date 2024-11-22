@@ -9,8 +9,13 @@ export default defineNuxtConfig({
       pocketBaseUrl: "http://127.0.0.1:8090",
     },
   },
+  css: ["assets/css/tailwind.css", "assets/css/vue-datepicker.css"],
 
   image: {
     dir: "assets/media",
+  },
+
+  build: {
+    transpile: ["@vuepic/vue-datepicker"],
   },
 });

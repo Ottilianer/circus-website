@@ -7,9 +7,27 @@
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">
           <span class="sr-only">Ottilianer</span>
+
+          <div
+            v-if="routeContainsCircus"
+            class="flex flex-row justify-center items-center gap-2"
+          >
+            <NuxtImg
+              class="h-8 w-auto"
+              src="/svg/circus-logo.svg"
+              alt="Circus St. Ottilien Logo"
+            />
+            <Handshake />
+            <NuxtImg
+              class="h-8 w-auto"
+              src="/svg/ottilianer-logo.svg"
+              alt="Ottilianer Logo"
+            />
+          </div>
           <NuxtImg
+            v-else
             class="h-8 w-auto"
-            src="/svg/logo.svg"
+            src="/svg/ottilianer-logo.svg"
             alt="Ottilianer Logo"
           />
         </a>
@@ -78,7 +96,7 @@
           </transition>
         </Popover>
 
-        <NuxtLink to="#" class="text-sm/6 font-semibold text-gray-900"
+        <NuxtLink to="/circus" class="text-sm/6 font-semibold text-gray-900"
           >Circus</NuxtLink
         >
         <NuxtLink to="#" class="text-sm/6 font-semibold text-gray-900"
@@ -102,8 +120,15 @@
           <a href="#" class="-m-1.5 p-1.5">
             <span class="sr-only">Ottilianer</span>
             <NuxtImg
+              v-if="routeContainsCircus"
               class="h-8 w-auto"
-              src="/svg/logo.svg"
+              src="/svg/circus-logo.svg"
+              alt="Circus St. Ottilien Logo"
+            />
+            <NuxtImg
+              v-else
+              class="h-8 w-auto"
+              src="/svg/ottilianer-logo.svg"
               alt="Ottilianer Logo"
             />
           </a>
@@ -140,10 +165,10 @@
                   >
                 </DisclosurePanel>
               </Disclosure>
-              <a
-                href="#"
+              <NuxtLink
+                to="/circus"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >Circus</a
+                >Circus</NuxtLink
               >
               <a
                 href="#"
@@ -214,4 +239,6 @@ const ottilianerPages = [
 ];
 
 const mobileMenuOpen = ref(false);
+
+const routeContainsCircus = useRoute().fullPath.includes("circus");
 </script>

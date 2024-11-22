@@ -13,6 +13,7 @@
     "@headlessui/vue": "^1.7.23",
     "@nuxt/image": "^1.8.1",
     "@nuxtjs/tailwindcss": "^6.12.2",
+    "@vuepic/vue-datepicker": "^10.0.0",
     "lucide-vue-next": "^0.460.0",
     "nuxt": "^3.14.1592",
     "pocketbase": "^0.21.5",

@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         primary: "#1462a0",
+        circus: "#cb3032",
       },
     },
   },
