@@ -1,24 +1,25 @@
 <template>
-  <CircusReservationDialog :open="reservationDialogOpen" />
-
   <section class="image-container">
     <div
-      class="px-4 mx-auto max-w-screen-xl text-center"
+      class="px-4 mx-auto max-w-screen-xl text-center flex flex-col items-center justify-center"
       :class="{
         'py-12 lg:py-24': hasText,
         'py-24 lg:py-56': !hasText,
       }"
     >
+      <NuxtImg src="/png/circus-logo.png" class="w-64 h-auto" />
       <h1
         class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl"
       >
         <span v-if="hasText">{{ text }}</span>
         <span v-else>Willkommen beim Circus St. Ottilien!</span>
       </h1>
-      <div class="flex flex-row gap-3 justify-center items-center mt-10">
+      <div
+        class="flex flex-col md:flex-row gap-3 justify-center items-center mt-10"
+      >
         <NuxtLink to="/circus/program" class="circus-button">Programm</NuxtLink>
-        <NuxtLink to="/circus/reservation" class="circus-button"
-          >Reservierung</NuxtLink
+        <NuxtLink to="/circus/presale" class="circus-button"
+          >Vorverkauf</NuxtLink
         >
         <NuxtLink to="/circus/#arrival" class="circus-button">Anreise</NuxtLink>
       </div>
@@ -27,8 +28,6 @@
 </template>
 
 <script setup lang="ts">
-const reservationDialogOpen = ref<boolean>(false);
-
 const props = defineProps<{
   text?: string;
 }>();

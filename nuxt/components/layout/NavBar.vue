@@ -8,22 +8,12 @@
         <a href="#" class="-m-1.5 p-1.5">
           <span class="sr-only">Ottilianer</span>
 
-          <div
+          <NuxtImg
             v-if="routeContainsCircus"
-            class="flex flex-row justify-center items-center gap-2"
-          >
-            <NuxtImg
-              class="h-8 w-auto"
-              src="/svg/circus-logo.svg"
-              alt="Circus St. Ottilien Logo"
-            />
-            <Handshake />
-            <NuxtImg
-              class="h-8 w-auto"
-              src="/svg/ottilianer-logo.svg"
-              alt="Ottilianer Logo"
-            />
-          </div>
+            class="w-8 h-auto"
+            src="/png/circus-logo.png"
+            alt="Circus St. Ottilien Logo"
+          />
           <NuxtImg
             v-else
             class="h-8 w-auto"
@@ -121,8 +111,8 @@
             <span class="sr-only">Ottilianer</span>
             <NuxtImg
               v-if="routeContainsCircus"
-              class="h-8 w-auto"
-              src="/svg/circus-logo.svg"
+              class="w-8 h-auto"
+              src="/png/circus-logo.png"
               alt="Circus St. Ottilien Logo"
             />
             <NuxtImg

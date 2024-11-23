@@ -1,9 +1,8 @@
-import PocketBase from "pocketbase";
-import usePocketBase from "../pocketbase";
+import getPocketBaseInstance from "../pocketbase";
 
 export default defineEventHandler(async (event) => {
   try {
-    const pb = await usePocketBase();
+    const pb = await getPocketBaseInstance();
 
     const identifier = getQuery(event).identifier;
 

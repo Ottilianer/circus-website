@@ -18,4 +18,8 @@
   .circus-input {
     @apply focus:outline-none bg-gray-200 border leading-none border-gray-400 text-gray-500 text-sm rounded-lg focus:border-circus focus:border-2 block w-full p-3;
   }
+
+  .circus-link {
+    @apply text-circus;
+  }
 }
