@@ -98,7 +98,7 @@
 
       <div class="flex flex-row items-center gap-2">
         <input type="checkbox" id="terms-checkbox" required />
-        <label for="terms-checkbox"
+        <label for="terms-checkbox" class="select-none"
           >Ich habe die
           <NuxtLink
             to="/circus/presale-conditions"
@@ -150,7 +150,7 @@ async function handleSubmit() {
   }
 
   try {
-    $fetch("/api/circus/presale", {
+    $fetch("/api/circus/presale/create", {
       method: "POST",
       body: formModel,
 

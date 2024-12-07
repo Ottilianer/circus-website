@@ -10,7 +10,7 @@
         </div>
       </div>
       <div v-else class="text-3xl font-bold text-black text-center">
-        Der Countdown ist abgelaufen!
+        Der Circus hat begonnen!
       </div>
     </div>
   </section>
