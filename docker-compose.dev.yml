@@ -13,12 +13,13 @@ services:
   frontend:
     env_file:
       - example.env
-    image: oven/bun:latest
-    working_dir: /app
-    command: ["bun", "run", "dev", "--host", "0.0.0.0", "--port", "3000"]
+    build:
+      context: "./frontend"
+      dockerfile: Dockerfile.dev
     volumes:
-      - ./ottilianer:/app
+      - ./frontend:/app
     ports:
       - "3000:3000"
     depends_on:
       - pocketbase
+

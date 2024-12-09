@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .button {
+    @apply cursor-pointer transition-all bg-primary text-white px-6 py-2 hover:-translate-y-1 duration-200 font-semibold;
+  }
+
+  .input {
+    @apply focus:outline-none bg-gray-200 border leading-none border-gray-400 text-gray-500 text-sm rounded-lg focus:border-primary focus:border-2 block w-full p-3;
+  }
+
+  .circus-button {
+    @apply cursor-pointer transition-all bg-circus text-white px-6 py-2 hover:-translate-y-1 duration-200 font-semibold;
+  }
+
+  .circus-input {
+    @apply focus:outline-none bg-gray-200 border leading-none border-gray-400 text-gray-500 text-sm rounded-lg focus:border-circus focus:border-2 block w-full p-3;
+  }
+
+  .circus-link {
+    @apply text-circus;
+  }
+}

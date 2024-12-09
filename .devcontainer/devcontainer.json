@@ -1,0 +1,31 @@
+{
+    "name": "Ottilianer-DevContainer",
+    "dockerComposeFile": [
+        "../docker-compose.dev.yml",
+        "docker-compose.yml"
+    ],
+    "service": "frontend",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "editor.formatOnSave": true,
+                "editor.focker rmatOnPaste": true,
+                "dev.containers.copyGitConfig": true,
+                "git.path": "/usr/bin/git"
+            },
+            "extensions": [
+                "ms-azuretools.vscode-docker",
+                "editorconfig.editorconfig",
+                "GitHub.copilot",
+                "icrawl.discord-vscode",
+                "tamasfe.even-better-toml",
+                "Nuxtr.nuxt-vscode-extentions",
+                "bradlc.vscode-tailwindcss",
+                "vitest.explorer",
+                "esbenp.prettier-vscode",
+            ]
+        }
+    },
+    "postStartCommand": "apt-get update && apt-get install -y git && git config --global --add safe.directory /workspace"
+}
