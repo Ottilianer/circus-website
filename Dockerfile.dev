@@ -1,0 +1,37 @@
+# Choose a base image
+FROM node:18.17.1
+
+# Set working directory
+WORKDIR /app
+
+# Add package.json and package-lock.json
+COPY ./package.json ./pnpm-lock.yaml /app/
+
+RUN npm install -g pnpm
+
+# Install dependencies
+RUN pnpm install
+
+# Copy the shared code that lives outside of directus dir
+COPY shared-code ../shared-code
+
+# Copy the rest of the application
+COPY directus-cms .
+
+# Set working directory to interface extension
+WORKDIR /usr/src/app/directus-cms/extensions/directus-extension-programmierbar-bundle
+
+# Install publishable interface extension dependencies
+RUN npm install
+
+# Build the extension
+RUN npm run build
+
+# Set working directory back to directus project root
+WORKDIR /usr/src/app/directus-cms
+
+# Start the app
+CMD [ "npx", "directus", "start" ]
+
+# Expose port
+EXPOSE 8055

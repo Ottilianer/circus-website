@@ -1,5 +1,39 @@
 name: ottilianer-v2
 services:
+  database:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ottilianer_db
+      POSTGRES_USER: ottilianer_user
+      POSTGRES_PASSWORD: ottilianer_pw
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    image: directus/directus
+    ports:
+      - 8055:8055
+    volumes:
+      - ./backend/database:/directus
+      - ./backend/uploads:/directus/uploads
+      - ./backend/extensions:/directus/extensions
+      - ./backend/snapshots:/directus/snapshots
+    environment:
+      SECRET: "replace-with-secure-random-value"
+      ADMIN_EMAIL: "admin@example.com"
+      ADMIN_PASSWORD: "d1r3ctu5"
+      DB_CLIENT: "postgres"
+      DB_HOST: "database"
+      DB_PORT: "5432"
+      DB_DATABASE: "ottilianer_db"
+      DB_USER: "ottilianer_user"
+      DB_PASSWORD: "ottilianer_pw"
+      WEBSOCKETS_ENABLED: "true"
+    depends_on:
+      - database
+
   pocketbase:
     build:
       context: "."
@@ -23,3 +57,5 @@ services:
     depends_on:
       - pocketbase
 
+volumes:
+  postgres_data:
