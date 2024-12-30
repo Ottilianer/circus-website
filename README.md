@@ -1,51 +1,75 @@
-## Installation
+# Nuxt Minimal Starter
 
-> **Note:** This guide assumes that you're using a Unix-based operating system. If you're using Windows, you could adjust the commands accordingly but I would recommend using a Unix-based operating system or at least the Windows Subsystem for Linux (WSL).
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-Please make sure you have installed the following software:
+## Setup
 
-- [Bun Runtime](https://bun.sh)
-- [Node.js](https://nodejs.org)
-- [Docker](https://www.docker.com)
-- [Docker Compose](https://docs.docker.com/compose/)
+Make sure to install dependencies:
 
-### Clone the Repository
+```bash
+# npm
+npm install
 
-```sh
-git clone git@github.com:Ottilianer/ottilianer-v2.git
-```
+# pnpm
+pnpm install
 
-### Change the Directory
+# yarn
+yarn install
 
-```sh
-cd ottilianer-v2
-```
-
-### Install the Frontend
-
-```sh
-cd frontend
+# bun
 bun install
 ```
 
-### Starting the Containers
+## Development Server
 
-```sh
-docker compose -f docker-compose.dev.yml up
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
 ```
 
-## Permission Denied Error
+## Production
 
-![Permission Denied Error](./readme/permission-denied-error.png)
+Build the application for production:
 
-It's possible that you receive a error like shown above when installing new npm modules. This error occurs, because Docker manages the environment, which means, that the `nuxt/.nuxt` folder belongs to the root user (You don't have to understand this). All you have to know is that you should run
+```bash
+# npm
+npm run build
 
-```sh
-sudo chmod -R 777 .
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
 ```
 
-in the workspace **after stopping the containers** to fix the error temporarily.
+Locally preview production build:
 
-## Any Questions?
+```bash
+# npm
+npm run preview
 
-If you have any questions, please contact me (Leo Gall) via Teams (<leo.gall@rmg-ottilien.de>), E-Mail (<gall.dev@proton.me>) or by phone (0170 591 5654).
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

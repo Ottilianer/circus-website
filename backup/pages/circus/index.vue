@@ -1,4 +1,0 @@
-<template>
-  <CircusJumbotron />
-  <CircusCountdown />
-</template>
