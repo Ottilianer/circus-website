@@ -7,10 +7,10 @@ ENV SKIP_OPTIONAL_DEPENDENCIES=true
 COPY ./package.json /app/package.json
 
 # Install pnpm globally
-RUN npm install -g pnpm
+RUN --no-cache npm install -g pnpm
 
 # Install dependencies with pnpm
-RUN pnpm install
+RUN --no-cache pnpm install
 
 COPY ./ /app
 

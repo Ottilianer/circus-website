@@ -25,12 +25,12 @@
     "swiper": "^11.2.1",
     "vue": "latest",
     "vue-router": "latest",
-    "vue-toastification": "2.0.0-rc.5"
+    "vue-toastification": "2.0.0-rc.5",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@nuxt/test-utils": "^3.15.4",
     "@tailwindcss/typography": "^0.5.16",
-    "@types/tailwindcss": "^3.1.0",
     "@vue/test-utils": "^2.4.6",
     "happy-dom": "^15.11.7",
     "playwright-core": "^1.49.1",
