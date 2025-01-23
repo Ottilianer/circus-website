@@ -1,4 +1,4 @@
-interface CircusPerformance {
+export interface CircusPerformance {
   collectionId: string;
   collectionName: string;
   created: string;
@@ -8,12 +8,10 @@ interface CircusPerformance {
   specialPerformance: boolean;
 }
 
-interface CircusPresale {
+export interface CircusPresale {
   name: string;
   email: string;
   regularCards: number;
   discountCards: number;
   performance: null | CircusPerformance;
 }
-
-export type { CircusPerformance, CircusPresale };

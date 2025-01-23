@@ -1,10 +1,10 @@
 <template>
   <section class="items-center py-8 mx-auto max-w-screen-xl px-4 md:px-0">
-    <form @submit.prevent="handleSubmit" class="flex flex-col gap-3">
+    <form @submit.prevent="form.handleSubmit" class="flex flex-col gap-3">
       <div>
         <label for="name-input">Vor- & Nachname</label> <br />
         <input
-          v-model="formModel.name"
+          v-model="form.name.value"
           type="text"
           placeholder="Vor- & Nachname"
           class="input"
@@ -16,7 +16,7 @@
       <div>
         <label for="email-input">Email Addresse</label> <br />
         <input
-          v-model="formModel.email"
+          v-model="form.email.value"
           type="email"
           placeholder="Email Addresse"
           class="input"
@@ -31,7 +31,7 @@
         >
         <br />
         <input
-          v-model="formModel.regularCards"
+          v-model="form.regularCards.value"
           type="number"
           min="0"
           id="regular-visitors-input"
@@ -47,7 +47,7 @@
         >
         <br />
         <input
-          v-model="formModel.discountCards"
+          v-model="form.discountCards.value"
           type="number"
           min="0"
           id="discount-visitors-input"
@@ -61,7 +61,7 @@
         <label for="performance-select">Vorstellung wählen</label> <br />
 
         <select
-          v-model="formModel.performance"
+          v-model="form.performance.value"
           name="performance-select"
           id="performance-select"
           class="input"
@@ -77,19 +77,19 @@
                 (performance) => performance.specialPerformance
               )"
             >
-              {{ new Date(performance.date).toLocaleDateString() }} -
-              {{ new Date(performance.date).toLocaleTimeString() }}
+              {{ new Date(performance.date).toLocaleDateString("de") }} -
+              {{ new Date(performance.date).toLocaleTimeString("de") }}
             </option>
           </optgroup>
-          <optgroup label="Nachmittagsvorstellungen">
+          <optgroup label="Standardvorstellungen">
             <option
               :value="performance"
               v-for="performance in performances.filter(
                 (performance) => !performance.specialPerformance
               )"
             >
-              {{ new Date(performance.date).toLocaleDateString() }} -
-              {{ new Date(performance.date).toLocaleTimeString() }}
+              {{ new Date(performance.date).toLocaleDateString("de") }} -
+              {{ new Date(performance.date).toLocaleTimeString("de") }}
             </option>
           </optgroup>
           <hr />
@@ -109,84 +109,91 @@
       </div>
 
       <button type="submit" class="button mt-4">
-        Reservieren für {{ price }}€
+        Reservieren für {{ form.price }}€
       </button>
     </form>
   </section>
 </template>
 
 <script setup lang="ts">
-import { reactive, computed } from "vue";
 import { useToast } from "vue-toastification";
-import type { CircusPerformance } from "~/shared/types/presales";
 
 const toast = useToast();
+const pb = usePocketbase();
+const form = useForm();
 
-const isSpecialPerformance = computed(() => false);
+const performances = ref<CircusPerformance[]>([]);
 
-const formModel = reactive({
-  name: "",
-  email: "",
-  regularCards: 0,
-  discountCards: 0,
-  performance: null as Performance | null,
-});
+function useForm() {
+  const name = ref("");
+  const email = ref("");
+  const regularCards = ref(0);
+  const discountCards = ref(0);
+  const performance = ref<CircusPerformance | null>(null);
 
-async function handleSubmit() {
-  console.log(formModel);
-  if (!/^[A-Za-z]+\s[A-Za-z]+$/.test(formModel.name)) {
-    toast.error("Bitte geben Sie einen gültigen Vor- und Nachnamen ein.");
-    return;
-  }
+  async function handleSubmit() {
+    if (!/^[A-Za-z]+\s[A-Za-z]+$/.test(name.value)) {
+      toast.error("Bitte geben Sie einen gültigen Vor- und Nachnamen ein.");
+      return;
+    }
 
-  if (formModel.regularCards + formModel.discountCards > 15) {
-    toast.error(
-      "Bitte nutzen Sie die Gruppenanmeldung bei mehr als 15 Karten."
-    );
-    return;
-  }
+    if (regularCards.value + discountCards.value > 15) {
+      toast.error(
+        "Bitte nutzen Sie die Gruppenanmeldung bei mehr als 15 Karten."
+      );
+      return;
+    }
 
-  try {
-    $fetch("/api/circus/presale/create", {
-      method: "POST",
-      body: formModel,
+    try {
+      $fetch("/api/circus/presale/create", {
+        method: "POST",
+        body: JSON.stringify({
+          name: name.value,
+          email: email.value,
+          regularCards: regularCards.value,
+          discountCards: discountCards.value,
+          performance: performance.value?.id,
+        }),
 
-      onResponse: ({ response }) => {
-        if (response.ok) {
-          toast.success(
-            "Bitte bestätigen Sie Ihre Email-Adresse über den Link, den wir Ihnen zugesendet haben."
+        onResponse: ({ response }) => {
+          if (response.ok) {
+            toast.success(
+              "Bitte bestätigen Sie Ihre Email-Adresse über den Link, den wir Ihnen zugesendet haben."
+            );
+          }
+        },
+
+        onResponseError: ({ response }) => {
+          toast.error(
+            `Interner Serverfehler: ${response.statusText} - Bitte prüfen Sie Ihre Eingaben.`
           );
-        }
-      },
-
-      onResponseError: ({ response }) => {
-        toast.error(
-          `Interner Serverfehler: ${response.statusText} - Bitte prüfen Sie Ihre Eingaben.`
-        );
-      },
-    });
-  } catch (error) {
-    console.error(error);
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
+
+  const price = computed(() => {
+    if (performance.value?.specialPerformance) {
+      return (regularCards.value || 0) * 12 + (discountCards.value || 0) * 9;
+    } else {
+      return (regularCards.value || 0) * 9 + (discountCards.value || 0) * 6;
+    }
+  });
+
+  return {
+    handleSubmit,
+    price,
+    name,
+    email,
+    regularCards,
+    discountCards,
+    performance,
+  };
 }
 
-const price = computed(() => {
-  if (isSpecialPerformance.value) {
-    return (
-      (formModel.regularCards || 0) * 12 + (formModel.discountCards || 0) * 9
-    );
-  } else {
-    return (
-      (formModel.regularCards || 0) * 9 + (formModel.discountCards || 0) * 6
-    );
-  }
+onMounted(async () => {
+  performances.value = await pb.getPerformances();
 });
-
-const { data } = await useAsyncData("performances", () =>
-  $fetch("/api/circus/performances")
-);
-
-const performances = computed(
-  () => data.value?.data as unknown as CircusPerformance[]
-);
 </script>

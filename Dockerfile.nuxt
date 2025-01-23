@@ -2,10 +2,14 @@ FROM node:20
 
 WORKDIR /app
 
+ENV SKIP_OPTIONAL_DEPENDENCIES=true
+
 COPY ./package.json /app/package.json
 
+# Install pnpm globally
 RUN npm install -g pnpm
 
+# Install dependencies with pnpm
 RUN pnpm install
 
 COPY ./ /app
