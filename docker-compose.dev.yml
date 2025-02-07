@@ -2,23 +2,45 @@ name: ottilianer-v2
 services:
   pocketbase:
     build:
-      context: "."
-      dockerfile: Dockerfile.pocketbase
+      context: ./backend
+      dockerfile: Dockerfile.dev
     restart: unless-stopped
     ports:
       - 8090:8090
     volumes:
-      - "./pocketbase-data:/pb/pb_data"
+      - "./backend/pb_data:/pb/pb_data"
+      - "./backend/pb_hooks:/pb/pb_hooks"
+    networks:
+      - default
+
   nuxt:
     env_file:
-      - example.env
+      - .env.template
     build:
-      context: "."
-      dockerfile: Dockerfile.nuxt
-    volumes:
-      - ./.:/app
-      - /app/node_modules
+      context: ./frontend
+      dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
     depends_on:
       - pocketbase
+    restart: unless-stopped
+    networks:
+      - default
+
+  inbucket:
+    image: "inbucket/inbucket:latest"
+    ports:
+      - "9000:9000"
+      - "2500:2500"
+      - "1100:1100"
+    volumes:
+      - "./inbucket:/data"
+    restart: unless-stopped
+    networks:
+      - default
+
+# network
+
+networks:
+  default:
+    driver: bridge

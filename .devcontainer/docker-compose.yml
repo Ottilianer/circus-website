@@ -1,0 +1,4 @@
+services:
+  nuxt:
+    volumes:
+      - .:/workspace:delegated
