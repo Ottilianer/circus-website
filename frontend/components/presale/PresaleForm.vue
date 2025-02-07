@@ -116,9 +116,8 @@
 </template>
 
 <script setup lang="ts">
-import { useToast } from "vue-toastification";
+import { toast } from "vue-sonner";
 
-const toast = useToast();
 const pb = usePocketbase();
 const form = useForm();
 

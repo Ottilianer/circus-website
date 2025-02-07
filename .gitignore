@@ -1,3 +1,5 @@
 docker-data
 inbucket
 node_modules
+.pnpm_store
+**/*.DS_Store
