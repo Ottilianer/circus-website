@@ -53,6 +53,10 @@
             :src="$pb.files.getURL(circusAct, circusAct.image)"
             class="rounded-lg w-full aspect-square object-cover"
           />
+
+          <div
+            class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-gray-700/70 to-gray-700/40 rounded-lg"
+          ></div>
           <div class="absolute bottom-5 left-5 text-white">
             <h3 class="font-semibold text-2xl">
               {{ circusAct.title }}
