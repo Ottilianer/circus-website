@@ -4,21 +4,30 @@
     <swiper
       v-if="!isMobile"
       :navigation="true"
-      :modules="modules"
+      :modules="[Navigation]"
       class="select-none rounded-xl"
       :loop="true"
     >
-      <swiper-slide v-for="i in 3" :key="`desktop-${i}`">
+      <swiper-slide v-for="i in Math.ceil(circusActs.length / 3)" :key="i">
         <div class="grid grid-cols-3 gap-4">
-          <div v-for="j in 3" :key="`item-${j}`" class="relative">
+          <div
+            v-for="circusAct in circusActs.slice((i - 1) * 3, i * 3)"
+            :key="circusAct.id"
+            class="relative"
+          >
             <img
-              :src="`https://loremflickr.com/800/800?random=${j * i}`"
+              :src="$pb.files.getURL(circusAct, circusAct.image)"
               class="rounded-lg w-full aspect-square object-cover"
             />
+            <!-- Neuer Overlay-Div mit Farbverlauf -->
+            <div
+              class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-gray-700/70 to-gray-700/40 rounded-lg"
+            ></div>
+
             <div class="absolute bottom-5 left-5 text-white">
-              <h3 class="font-semibold text-2xl">Hallo</h3>
+              <h3 class="font-semibold text-2xl">{{ circusAct.title }}</h3>
               <p class="text-lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                {{ circusAct.description }}
               </p>
             </div>
           </div>
@@ -34,16 +43,22 @@
       class="select-none rounded-xl"
       :loop="true"
     >
-      <swiper-slide v-for="i in 9" :key="`mobile-${i}`" class="px-2">
+      <swiper-slide
+        v-for="circusAct in circusActs"
+        :key="circusAct.id"
+        class="px-2"
+      >
         <div class="relative">
           <img
-            :src="`https://loremflickr.com/800/800?random=${i}`"
+            :src="$pb.files.getURL(circusAct, circusAct.image)"
             class="rounded-lg w-full aspect-square object-cover"
           />
           <div class="absolute bottom-5 left-5 text-white">
-            <h3 class="font-semibold text-2xl">Hallo</h3>
+            <h3 class="font-semibold text-2xl">
+              {{ circusAct.title }}
+            </h3>
             <p class="text-lg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              {{ circusAct.description }}
             </p>
           </div>
         </div>
@@ -65,12 +80,40 @@ import { DownloadCloudIcon } from "lucide-vue-next";
 import "swiper/css";
 import "swiper/css/navigation";
 
+const { $pb } = useNuxtApp();
+const {
+  public: { POCKETBASE_ADDRESS },
+} = useRuntimeConfig();
+
 const modules = [Navigation];
 const isMobile = ref(false);
 
 const checkMobile = () => {
   isMobile.value = window.innerWidth < 768;
 };
+
+const { circusActs, fetchState } = useCircusActs();
+
+function useCircusActs() {
+  const circusActs = ref<CircusAct[]>([]);
+  const fetchState = ref<FetchState>(FetchState.NotStarted);
+
+  const fetchCircusActs = async () => {
+    fetchState.value = FetchState.Loading;
+    try {
+      const response = await $pb.collection("circus_acts").getFullList();
+      circusActs.value = response as unknown as CircusAct[];
+      console.log(circusActs.value);
+      fetchState.value = FetchState.Success;
+    } catch (error) {
+      fetchState.value = FetchState.Error;
+    }
+  };
+
+  onMounted(fetchCircusActs);
+
+  return { circusActs, fetchState };
+}
 
 onMounted(() => {
   checkMobile();
