@@ -5,11 +5,6 @@
       title="Anreise"
       content="Wir befinden uns hinter dem Emminger Hof in Richtung Eresing. Die Anreise ist im Umkreis von 10 km gut ausgeschildert."
     />
-    <p class="text-center max-w-lg">
-      Die Karte kann Ihnen leider nicht angezeigt werden, da Sie optionale
-      Cookies nicht akzeptiert haben. Sie können Ihre Cookie-Einstellungen
-      <button class="link">hier</button> anpassen.
-    </p>
     <iframe
       class="w-full h-[600px] px-16 lg:m-0 rounded-[1.5rem]"
       style="border: 0"
