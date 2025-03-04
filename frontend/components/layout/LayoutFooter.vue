@@ -3,9 +3,9 @@
     <div class="items-center px-6 xl:px-0 py-8 mx-auto max-w-screen-xl">
       <div class="font-light text-gray-500 sm:text-lg text-center">
         <div
-          class="tracking-tight flex flex-row justify-between items-center mb-8"
+          class="tracking-tight flex flex-col md:flex-row justify-between items-center mb-8"
         >
-          <div class="flex flex-row gap-3">
+          <div class="flex flex-col md:flex-row gap-3">
             <NuxtLink
               v-for="(legal, index) in legals"
               :key="index"
@@ -15,7 +15,7 @@
               {{ legal.title }}
             </NuxtLink>
           </div>
-          <div class="flex flex-row gap-3">
+          <div class="flex flex-row gap-3 md:mt-0 mt-4">
             <NuxtLink
               v-for="(social, index) in socials"
               :key="index"
