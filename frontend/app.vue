@@ -8,7 +8,7 @@
 
   <div
     v-if="cookieModalOpen"
-    class="fixed bottom-10 right-10 bg-white shadow-xl shadow-gray-500 p-4 rounded-lg border border-gray-200 flex flex-col justify-end items-end z-50"
+    class="fixed md:bottom-10 md:right-10 bottom-0 bg-white shadow-xl shadow-gray-500 p-4 rounded-lg border border-gray-200 flex flex-col justify-end items-end z-50"
   >
     <p class="text-body font-redrose max-w-md">
       Wir verkaufen nicht Ihre Daten, sondern ein unvergessliches Erlebnis.
