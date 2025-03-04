@@ -17,6 +17,12 @@ export default defineNuxtConfig({
     client: true,
   },
 
+  runtimeConfig: {
+    public: {
+      POCKETBASE_ADDRESS: process.env.POCKETBASE_ADDRESS,
+    },
+  },
+
   components: [{ path: "~/components", pathPrefix: false }],
   css: ["public/css/tailwind.css"],
 
