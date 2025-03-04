@@ -32,6 +32,7 @@ routerAdd(
 
     try {
       e.app.newMailClient().send(message);
+      return e.json(200, { message: "Email sent" });
     } catch (err) {
       console.error("Error sending email", err);
       return e.json(500, { error: "Error sending email" });

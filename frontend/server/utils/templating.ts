@@ -38,7 +38,7 @@ export class Template {
       throw new Error("Template not loaded");
     }
     return Object.entries(this.patterns).reduce(
-      (str, [key, value]) => str.replaceAll(key, value),
+      (str, [key, value]) => str.replaceAll(`{{ ${key} }}`, value),
       this.template
     );
   }

@@ -1,6 +1,9 @@
 <template>
-  <section class="items-center py-8 mx-auto max-w-screen-xl px-4 md:px-0">
-    <form @submit.prevent="form.handleSubmit" class="flex flex-col gap-3">
+  <section class="py-8 px-4 md:px-0 mx-auto max-w-screen-lg">
+    <form
+      @submit.prevent="form.handleSubmit"
+      class="flex flex-col gap-3 min-w-full"
+    >
       <div>
         <label for="name-input">Vor- & Nachname</label> <br />
         <input
@@ -118,7 +121,7 @@
 <script setup lang="ts">
 import { toast } from "vue-sonner";
 
-const pb = usePocketbase();
+const { $pb } = useNuxtApp();
 const form = useForm();
 
 const performances = ref<CircusPerformance[]>([]);
@@ -144,14 +147,14 @@ function useForm() {
     }
 
     try {
-      $fetch("/api/circus/presale/create", {
+      $fetch("/api/presale/create", {
         method: "POST",
         body: JSON.stringify({
           name: name.value,
           email: email.value,
           regularCards: regularCards.value,
           discountCards: discountCards.value,
-          performance: performance.value?.id,
+          performanceId: performance.value?.id,
         }),
 
         onResponse: ({ response }) => {
@@ -163,9 +166,7 @@ function useForm() {
         },
 
         onResponseError: ({ response }) => {
-          toast.error(
-            `Interner Serverfehler: ${response.statusText} - Bitte prüfen Sie Ihre Eingaben.`
-          );
+          toast.error(`Interner Serverfehler: ${response.statusText}`);
         },
       });
     } catch (error) {
@@ -192,7 +193,12 @@ function useForm() {
   };
 }
 
+const fetchPerformances = async () => {
+  const performances = await $pb.collection("performances").getFullList();
+  return performances as unknown as CircusPerformance[];
+};
+
 onMounted(async () => {
-  performances.value = await pb.getPerformances();
+  performances.value = await fetchPerformances();
 });
 </script>

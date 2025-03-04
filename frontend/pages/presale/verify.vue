@@ -7,63 +7,58 @@
       color="#cb3032"
       size="100"
     />
-    <div v-else>
-      <div v-if="!query.code">
-        <Text
-          title="Hoppla!"
-          text="Du hast versucht, ohne Verifizierungscode deine Reservierung abzuschließen. Bitte überprüfe deine E-Mails und folge dem Link, den wir dir geschickt haben."
-          class="pt-8 px-4 lg:pt-16 lg:px-6"
-        />
-        {{ query.code }}
-        {{ query }}
-      </div>
+
+    <div v-else-if="fetchState == FetchState.NotStarted" class="flex flex-col">
       <div
-        v-else-if="fetchState == FetchState.NotStarted"
-        class="flex flex-col"
+        class="gap-6 items-center mx-auto max-w-screen-xl flex flex-col text-center justify-center px-4 lg:px-6"
       >
-        <Text
-          :title="textContent.title"
-          :text="textContent.text"
-          class="pt-8 px-4 lg:pt-16 lg:px-6"
-        />
-        <button @click="handleSubmit" class="button mx-auto m-3">
+        <div class="font-light text-gray-500 sm:text-lg">
+          <h2 class="mb-4 text-3xl tracking-tight font-semibold text-gray-900">
+            <span style="font-size: 6em" class="mb-24 lg:mt-0 mt-36 block"
+              >👍</span
+            >
+          </h2>
+          <h2 class="mb-2 text-heading">Fast geschafft!</h2>
+          <p class="text-body">
+            Klicken Sie auf die Schaltfläche, um Ihre Reservierung
+            abzuschließen.
+          </p>
+        </div>
+      </div>
+      <hr class="pb-3 mt-3 mx-6" />
+      <form
+        class="flex flex-col items-center mb-12"
+        @submit.prevent="handleSubmit"
+      >
+        <label class="flex items-center mb-4 text-body">
+          <input type="checkbox" class="mr-2 text-body" required />
+          Ich akzeptiere die
+          <NuxtLink class="link ml-1" to="/legal/presale-conditions"
+            >Vorverkaufsbedingungen</NuxtLink
+          >.
+        </label>
+        <button type="submit" class="button mx-auto m-3 mt-0">
           Reservierung abschließen
         </button>
-      </div>
-      <div v-else-if="fetchState == FetchState.Success" class="flex flex-col">
-        <Text
-          title="Du hast es geschafft! 🎉"
-          text="Deine Reservierung wurde erfolgreich abgeschlossen. Wir freuen uns darauf, dich bei uns begrüßen zu dürfen!"
-          class="pt-8 px-4 lg:pt-16 lg:px-6"
-        />
-      </div>
+      </form>
     </div>
+    <PresaleVerifySuccess v-else-if="fetchState == FetchState.Success" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { toast } from "vue-sonner";
+
 useHead({
-  title: "Ottilianer → Circus → Vorverkauf → Verifizierung",
+  title: "Ottilianer → Vorverkauf → Verifizierung",
 });
 
 const { query } = useRoute();
 
-enum FetchState {
-  NotStarted,
-  Loading,
-  Error,
-  Success,
-}
-
 const fetchState = ref<FetchState>(FetchState.NotStarted);
 
-const textContent = {
-  title: "Du bist fast fertig!",
-  text: "Du musst nur noch auf die Schaltfläche klicken, um deine Reservierung abzuschließen. Toll oder?",
-};
-
 async function handleSubmit() {
-  await $fetch("/api/circus/presale/verify", {
+  await $fetch("/api/presale/verify", {
     method: "POST",
     body: { code: query.code },
     onRequest: () => {
@@ -72,13 +67,21 @@ async function handleSubmit() {
     onResponse: ({ response }) => {
       if (response.ok) {
         fetchState.value = FetchState.Success;
+        toast.success("Ihre Reservierung wurde erfolgreich verifiziert.");
       } else {
         fetchState.value = FetchState.Error;
+        toast.error(
+          "Es ist ein Fehler aufgetreten. Prüfen Sie den Code und versuchen Sie es erneut."
+        );
       }
     },
     onResponseError: () => {
       fetchState.value = FetchState.Error;
     },
   });
+}
+
+if (!query.code) {
+  await navigateTo("/");
 }
 </script>

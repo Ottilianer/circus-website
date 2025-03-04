@@ -1,5 +1,5 @@
 <template>
-  <Toaster />
+  <Toaster position="top-center" richColors />
   <div class="font-redrose">
     <NuxtLayout>
       <NuxtPage />

@@ -17,4 +17,12 @@
   .link {
     @apply text-primary;
   }
+
+  .text-heading {
+    @apply  text-text-heading text-3xl tracking-tight font-semibold;
+  }
+
+  .text-body {
+    @apply text-text-body font-light sm:text-lg;
+  }
 }

@@ -12,6 +12,11 @@ export default defineNuxtConfig({
     "vue-sonner/nuxt",
   ],
 
+  sourcemap: {
+    server: true,
+    client: true,
+  },
+
   components: [{ path: "~/components", pathPrefix: false }],
   css: ["public/css/tailwind.css"],
 
