@@ -3,3 +3,6 @@ inbucket
 node_modules
 .pnpm_store
 **/*.DS_Store
+backend/pb_data
+backend/pb_data/*.db
+backend/pb_data/*.d.ts

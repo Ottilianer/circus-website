@@ -8,11 +8,15 @@
       class="select-none rounded-xl"
       :loop="true"
     >
-      <swiper-slide v-for="i in 3" :key="`desktop-${i}`">
+      <swiper-slide v-for="i in Math.ceil(images.length / 3)">
         <div class="grid grid-cols-3 gap-4">
-          <div v-for="j in 3" :key="`item-${j}`" class="relative">
+          <div
+            v-for="image in images.slice((i - 1) * 3, i * 3)"
+            class="relative"
+          >
             <img
-              :src="`https://loremflickr.com/800/800?random=${j * i}`"
+              :alt="image.alt"
+              :src="$pb.files.getURL(image, image.image)"
               class="rounded-lg w-full aspect-square object-cover"
             />
           </div>
@@ -28,10 +32,11 @@
       class="select-none rounded-xl"
       :loop="true"
     >
-      <swiper-slide v-for="i in 9" :key="`mobile-${i}`" class="px-2">
+      <swiper-slide v-for="image in images" :key="image.id" class="px-2">
         <div class="relative">
           <img
-            :src="`https://loremflickr.com/800/800?random=${i}`"
+            :alt="image.alt"
+            :src="$pb.files.getURL(image, image.image)"
             class="rounded-lg w-full aspect-square object-cover"
           />
         </div>
@@ -44,7 +49,6 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation } from "swiper/modules";
-import { DownloadCloudIcon } from "lucide-vue-next";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -52,13 +56,26 @@ import "swiper/css/navigation";
 const modules = [Navigation];
 const isMobile = ref(false);
 
+const images = ref<GalleryImage[]>([]);
+const { $pb } = useNuxtApp();
+
 const checkMobile = () => {
   isMobile.value = window.innerWidth < 768;
 };
 
-onMounted(() => {
+async function fetchGalleryImages() {
+  const result = await $pb.collection("gallery").getFullList({
+    filter: "highlight = true",
+  });
+
+  images.value = result as unknown as GalleryImage[];
+  console.log(images.value);
+}
+
+onMounted(async () => {
   checkMobile();
   window.addEventListener("resize", checkMobile);
+  await fetchGalleryImages();
 });
 
 onUnmounted(() => {
