@@ -107,7 +107,6 @@ function useCircusActs() {
     try {
       const response = await $pb.collection("circus_acts").getFullList();
       circusActs.value = response as unknown as CircusAct[];
-      console.log(circusActs.value);
       fetchState.value = FetchState.Success;
     } catch (error) {
       fetchState.value = FetchState.Error;
