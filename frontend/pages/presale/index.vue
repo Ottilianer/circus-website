@@ -10,6 +10,6 @@
 
 <script setup lang="ts">
 useHead({
-  title: "Vorverkauf • Circus St. Ottilien",
+  title: "Circus St. Ottilien • Vorverkauf",
 });
 </script>

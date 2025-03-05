@@ -50,7 +50,7 @@
 import { toast } from "vue-sonner";
 
 useHead({
-  title: "Ottilianer → Vorverkauf → Verifizierung",
+  title: "Circus St. Ottilien • Vorverkauf",
 });
 
 const { query } = useRoute();
