@@ -30,14 +30,10 @@
         <hr />
         <div class="mt-8 tracking-tight">
           Made with ☕ by
-          <NuxtLink
-            to="https://lgll.dev"
-            target="_blank"
-            class="hover:text-primary"
-          >
+          <NuxtLink to="https://lgll.dev" target="_blank" class="link">
             Leo Gall
           </NuxtLink>
-          <span class="md:block hidden"> • </span>
+          <span class="md:block hidden font-bold"> • </span>
           <p>
             &copy; Circus St. Ottilien
             {{ new Date().getFullYear() }}
@@ -52,15 +48,15 @@
 const legals = ref([
   {
     title: "Impressum",
-    link: "/legal/imprint",
+    link: "https://erzabtei.de/impressum",
   },
   {
     title: "Datenschutz",
-    link: "/legal/privacy",
+    link: "https://erzabtei.de/datenschutz",
   },
   {
     title: "Vorverkaufsbedingungen",
-    link: "/legal/presale",
+    link: "/legal/presale-conditions",
   },
 ]);
 const socials = ref([
