@@ -1,5 +1,7 @@
 <template>
   <section class="image-container">
+    <div class="bg-white w-full h-8"></div>
+
     <div
       class="px-4 mx-auto max-w-screen-xl text-center flex flex-col items-center justify-center py-24 lg:py-56 text-white"
     >
@@ -7,25 +9,26 @@
       <h1
         class="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl"
       >
-        Willkommen beim Circus St. Ottilien!
+        Willkommen beim Circus St.&nbsp;Ottilien!
       </h1>
       <div v-if="!isExpired" class="grid grid-cols-4 gap-4">
         <div v-for="(value, unit) in timeLeft" :key="unit" class="text-center">
-          <div class="text-5xl font-bold mb-2">{{ value }}</div>
-          <div class="text-xl">{{ unit }}</div>
+          <div class="lg:text-5xl text-2xl font-bold mb-2">{{ value }}</div>
+          <div class="text-xl uppercase">{{ unit }}</div>
         </div>
       </div>
       <div v-else class="text-3xl font-bold text-center">
         Der Circus hat begonnen!
       </div>
     </div>
+    <div class="bg-white w-full h-8"></div>
   </section>
 </template>
 
 <script lang="ts" setup>
 const targetDate = new Date("2025-07-18T18:00:00+01:00");
 const now = ref<Date>(new Date());
-const intervalId = ref(null);
+const intervalId = ref<NodeJS.Timeout | null>(null);
 
 const timeLeft = computed(() => {
   const difference = targetDate.getTime() - now.value.getTime();
@@ -39,10 +42,10 @@ const timeLeft = computed(() => {
   const seconds = Math.floor((difference / 1000) % 60);
 
   return {
-    Tage: days,
-    Stunden: hours,
-    Minuten: minutes,
-    Sekunden: seconds,
+    d: days,
+    h: hours,
+    m: minutes,
+    s: seconds,
   };
 });
 
@@ -67,6 +70,8 @@ onUnmounted(() => {
 
 <style lang="css" scoped>
 .image-container {
+  position: relative;
+  z-index: 1;
   background-image: url("https://i.ytimg.com/vi/Zirr9W6Z_rU/maxresdefault.jpg");
   background-size: cover, contain;
   background-position: center, top;
