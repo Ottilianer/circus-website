@@ -26,7 +26,6 @@ async function fetchGalleryImages() {
   });
 
   images.value = result as unknown as GalleryImage[];
-  console.log(images.value);
 }
 
 onMounted(fetchGalleryImages);

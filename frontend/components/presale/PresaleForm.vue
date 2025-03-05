@@ -187,7 +187,6 @@ function useForm() {
         (discountCards.value || 0) * parseFloat(PRESALE_SPECIAL_DISCOUNT_PRICE)
       );
     } else {
-      console.log(PRESALE_REGULAR_PRICE, PRESALE_DISCOUNT_PRICE);
       return (
         (regularCards.value || 0) * parseFloat(PRESALE_REGULAR_PRICE) +
         (discountCards.value || 0) * parseFloat(PRESALE_DISCOUNT_PRICE)

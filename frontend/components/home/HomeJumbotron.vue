@@ -11,15 +11,21 @@
       >
         Willkommen beim Circus St.&nbsp;Ottilien!
       </h1>
-      <div v-if="!isExpired" class="grid grid-cols-4 gap-4">
-        <div v-for="(value, unit) in timeLeft" :key="unit" class="text-center">
-          <div class="lg:text-5xl text-2xl font-bold mb-2">{{ value }}</div>
-          <div class="text-xl uppercase">{{ unit }}</div>
+      <ClientOnly>
+        <div v-if="!isExpired" class="grid grid-cols-4 gap-4">
+          <div
+            v-for="(value, unit) in timeLeft"
+            :key="unit"
+            class="text-center"
+          >
+            <div class="lg:text-5xl text-2xl font-bold mb-2">{{ value }}</div>
+            <div class="text-xl uppercase">{{ unit }}</div>
+          </div>
         </div>
-      </div>
-      <div v-else class="text-3xl font-bold text-center">
-        Der Circus hat begonnen!
-      </div>
+        <div v-else class="text-3xl font-bold text-center">
+          Der Circus hat begonnen!
+        </div>
+      </ClientOnly>
     </div>
     <div class="bg-white w-full h-8"></div>
   </section>
