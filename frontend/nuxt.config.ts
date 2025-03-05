@@ -33,12 +33,29 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      htmlAttrs: {
+        lang: "de",
+      },
+
       // Favicons
       link: [
         {
           rel: "icon",
           type: "image/x-icon",
           href: "/media/logos/logo_squared.png",
+        },
+      ],
+
+      meta: [
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1",
+        },
+        {
+          hid: "description",
+          name: "description",
+          content:
+            "Der Circus St. Ottilien ist einer der größten Schülercircusse der Welt. Er wird von Schülern des Gymnasiums St. Ottilien organisiert",
         },
       ],
     },
