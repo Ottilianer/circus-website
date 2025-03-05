@@ -4,8 +4,6 @@ routerAdd(
   (e) => {
     const body = e.requestInfo().body;
 
-    console.log("body", body.to);
-
     if (!body.to) {
       return e.json(400, { error: "to is required" });
     }
@@ -18,8 +16,8 @@ routerAdd(
 
     const message = new MailerMessage({
       from: {
-        name: "My App",
-        email: "test@example.com",
+        name: "Circus St. Ottilien",
+        email: "no-reply@circus.ottilien.de",
       },
       to: [
         {

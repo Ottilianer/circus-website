@@ -174,11 +174,24 @@ function useForm() {
     }
   }
 
+  const {
+    PRESALE_DISCOUNT_PRICE,
+    PRESALE_REGULAR_PRICE,
+    PRESALE_SPECIAL_DISCOUNT_PRICE,
+    PRESALE_SPECIAL_REGULAR_PRICE,
+  } = useRuntimeConfig().public;
   const price = computed(() => {
     if (performance.value?.specialPerformance) {
-      return (regularCards.value || 0) * 12 + (discountCards.value || 0) * 9;
+      return (
+        (regularCards.value || 0) * parseFloat(PRESALE_SPECIAL_REGULAR_PRICE) +
+        (discountCards.value || 0) * parseFloat(PRESALE_SPECIAL_DISCOUNT_PRICE)
+      );
     } else {
-      return (regularCards.value || 0) * 9 + (discountCards.value || 0) * 6;
+      console.log(PRESALE_REGULAR_PRICE, PRESALE_DISCOUNT_PRICE);
+      return (
+        (regularCards.value || 0) * parseFloat(PRESALE_REGULAR_PRICE) +
+        (discountCards.value || 0) * parseFloat(PRESALE_DISCOUNT_PRICE)
+      );
     }
   });
 

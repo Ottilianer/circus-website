@@ -64,10 +64,13 @@ async function handleSubmit() {
     onRequest: () => {
       fetchState.value = FetchState.Loading;
     },
-    onResponse: ({ response }) => {
+    onResponse: async ({ response }) => {
       if (response.ok) {
         fetchState.value = FetchState.Success;
         toast.success("Ihre Reservierung wurde erfolgreich verifiziert.");
+
+        // clear query parameter
+        await navigateTo("/presale/verify?fetchState=success");
       } else {
         fetchState.value = FetchState.Error;
         toast.error(
@@ -81,7 +84,19 @@ async function handleSubmit() {
   });
 }
 
-if (!query.code) {
+const fetchStateParam = query.fetchState;
+
+if (fetchStateParam == "success") {
+  fetchState.value = FetchState.Success;
+} else if (fetchStateParam == "error") {
+  fetchState.value = FetchState.Error;
+} else if (fetchStateParam == "loading") {
+  fetchState.value = FetchState.Loading;
+} else {
+  fetchState.value = FetchState.NotStarted;
+}
+
+if (!query.code && fetchState.value !== FetchState.Success) {
   await navigateTo("/");
 }
 </script>

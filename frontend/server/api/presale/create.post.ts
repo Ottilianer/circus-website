@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
     expiresIn: "24h",
   });
 
-  const template = await new Template("presale-code-email.html", {
+  const template = await new Template("presale-verify-email.html", {
     name: presale.name,
     code: code,
     domain: process.env.NUXT_URL as string,
@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
   try {
     await sendMail(
       presale.email,
-      "Bestätigen Sie Ihre Bestellung",
+      "Bestätigen Sie Ihre Teilnahme am Vorverkauf",
       template.render()
     );
   } catch (error) {

@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>E-Mail-Verifizierung</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body style="margin: 0; padding: 0">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td style="padding: 20px 0 30px 0">
+          <table
+            align="center"
+            border="0"
+            cellpadding="0"
+            cellspacing="0"
+            width="600"
+            style="border-collapse: collapse; border: 1px solid #cccccc"
+          >
+            <tr>
+              <td
+                align="center"
+                bgcolor="#cb3032"
+                style="
+                  padding: 40px 0 30px 0;
+                  font-family: Arial, sans-serif;
+                  font-size: 24px;
+                  font-weight: bold;
+                  color: #153643;
+                "
+              >
+                <img
+                  src="{{ domain }}/media/logos/logo_squared.png"
+                  alt="Circus Logo"
+                  width="200"
+                  height="200"
+                  style="display: block"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td
+                      style="
+                        color: #153643;
+                        font-family: Arial, sans-serif;
+                        font-size: 24px;
+                      "
+                    >
+                      <b>Hallo {{ name }},</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      style="
+                        padding: 20px 0 30px 0;
+                        color: #153643;
+                        font-family: Arial, sans-serif;
+                        font-size: 16px;
+                        line-height: 20px;
+                      "
+                    >
+                      Vielen Dank für Ihre Teilnahme am Vorverkauf. Bitte
+                      bestätigen Sie diese durch Klicken auf die folgenden
+                      Schaltfläche. Bitte beachten, dass Sie mit dem Klicken auf
+                      die Schaltfläche unsere
+                      <a
+                        href="{{ domain }}/legal/presale-conditions"
+                        style="color: #cb3032"
+                        >Vorverkaufsbedingungen</a
+                      >
+                      akzeptieren.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center">
+                      <table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td
+                            align="center"
+                            bgcolor="#cb3032"
+                            style="border-radius: 4px"
+                          >
+                            <a
+                              href="{{ domain }}/presale/verify?code={{ code }}"
+                              target="_blank"
+                              style="
+                                padding: 15px 25px;
+                                border-radius: 4px;
+                                color: #ffffff;
+                                font-family: Arial, sans-serif;
+                                font-size: 16px;
+                                text-decoration: none;
+                                display: inline-block;
+                              "
+                            >
+                              Vorverkauf bestätigen
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      style="
+                        padding: 20px 0 30px 0;
+                        color: #153643;
+                        font-family: Arial, sans-serif;
+                        font-size: 16px;
+                        line-height: 20px;
+                      "
+                    >
+                      Wenn Sie diese E-Mail nicht angefordert haben, können Sie
+                      diese ignorieren.
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td bgcolor="#cb3032" style="padding: 30px 30px 30px 30px">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td
+                      style="
+                        color: #fff;
+                        font-family: Arial, sans-serif;
+                        font-size: 14px;
+                      "
+                      width="75%"
+                    >
+                      &copy; {{ currentYear }} Circus St. Ottilien<br />
+                      <a
+                        href="{{ domain }}/legal/presale-conditions"
+                        style="color: #fff"
+                        ><font color="#fff">Bedingungen</font></a
+                      >
+                      |
+                      <a href="{{ domain }}/" style="color: #fff"
+                        ><font color="#fff">Website</font></a
+                      >
+                      |
+                      <a href="{{ domain }}/#contact" style="color: #fff"
+                        ><font color="#fff">Kontakt</font></a
+                      >
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

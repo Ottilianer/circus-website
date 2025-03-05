@@ -20,6 +20,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       POCKETBASE_ADDRESS: process.env.POCKETBASE_ADDRESS,
+      PRESALE_SPECIAL_REGULAR_PRICE: process.env.PRESALE_SPECIAL_REGULAR_PRICE,
+      PRESALE_SPECIAL_DISCOUNT_PRICE:
+        process.env.PRESALE_SPECIAL_DISCOUNT_PRICE,
+      PRESALE_REGULAR_PRICE: process.env.PRESALE_REGULAR_PRICE,
+      PRESALE_DISCOUNT_PRICE: process.env.PRESALE_DISCOUNT_PRICE,
     },
   },
 
