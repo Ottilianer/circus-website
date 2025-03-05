@@ -34,31 +34,23 @@
     </div>
 
     <!-- Mobile Menu -->
-    <transition
-      enter-active-class="transition duration-200 ease-out"
-      enter-from-class="opacity-0 -translate-y-1"
-      enter-to-class="opacity-100 translate-y-0"
-      leave-active-class="transition duration-150 ease-in"
-      leave-from-class="opacity-100 translate-y-0"
-      leave-to-class="opacity-0 -translate-y-1"
+
+    <div
+      v-if="isMobileMenuOpen"
+      class="absolute top-16 left-0 right-0 bg-white shadow-md z-50 border-t border-gray-200"
     >
-      <div
-        v-if="isMobileMenuOpen"
-        class="md:hidden bg-white border-t border-gray-100"
-      >
-        <div class="container mx-auto px-4 py-2">
-          <a
-            v-for="item in menuItems"
-            :key="item.name"
-            :href="item.href"
-            class="block py-3 text-gray-600 hover:text-purple-600 transition-colors duration-200 text-sm font-medium"
-            @click="isMobileMenuOpen = false"
-          >
-            {{ item.name }}
-          </a>
-        </div>
+      <div class="container mx-auto px-4 py-2">
+        <NuxtLink
+          v-for="item in menuItems"
+          :key="item.name"
+          :to="item.to"
+          class="block py-3 text-gray-600 hover:text-primary transition-colors duration-200 text-sm font-medium"
+          @click="isMobileMenuOpen = false"
+        >
+          {{ item.name }}
+        </NuxtLink>
       </div>
-    </transition>
+    </div>
   </nav>
 </template>
 
