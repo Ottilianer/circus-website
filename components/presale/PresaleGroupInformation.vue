@@ -40,7 +40,13 @@
         </div>
       </div>
     </div>
-    <NuxtLink class="button mt-5"> Formular herunterladen </NuxtLink>
+    <a
+      class="button mt-5"
+      href="/download/Circus2025_Anmeldung_Schulen_Kindergaerten.pdf"
+      download
+    >
+      Formular herunterladen
+    </a>
   </div>
 </template>
 
