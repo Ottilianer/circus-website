@@ -5,7 +5,13 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/image", "@nuxt/test-utils/module", "vue-sonner/nuxt", "@nuxthub/core"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@nuxt/image",
+    "@nuxt/test-utils/module",
+    "vue-sonner/nuxt",
+    "@nuxthub/core",
+  ],
 
   sourcemap: {
     server: true,
@@ -51,6 +57,14 @@ export default defineNuxtConfig({
           name: "description",
           content:
             "Der Circus St. Ottilien ist einer der größten Schülercircusse der Welt. Er wird von Schülern des Gymnasiums St. Ottilien organisiert",
+        },
+      ],
+
+      script: [
+        {
+          src: "https://cloud.umami.is/script.js",
+          defer: true,
+          "data-website-id": "c92ecedd-e595-47b5-a829-52f09b8a31a5",
         },
       ],
     },
