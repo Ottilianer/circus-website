@@ -1,6 +1,13 @@
 <template>
   <section class="image-container">
-    <div class="bg-white w-full h-8"></div>
+    <div
+      class="bg-gradient-to-tr from-primary to-red-600 w-full h-16 text-white flex items-center justify-center"
+    >
+      <p>
+        Sichern Sie sich jetzt Ihren Platz im Circuszelt. Tickets gibt es ab
+        sofort im Vorverkauf!
+      </p>
+    </div>
 
     <div
       class="px-4 mx-auto max-w-screen-xl text-center flex flex-col items-center justify-center py-24 lg:py-56 text-white"
@@ -32,6 +39,8 @@
 </template>
 
 <script lang="ts" setup>
+import { X } from "lucide-vue-next";
+
 const targetDate = new Date("2025-07-18T18:00:00+01:00");
 const now = ref<Date>(new Date());
 const intervalId = ref<NodeJS.Timeout | null>(null);

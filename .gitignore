@@ -118,3 +118,5 @@ testApp
 coverage
 
 # End of https://www.toptal.com/developers/gitignore/api/strapi
+.data
+backend
