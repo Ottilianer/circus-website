@@ -5,12 +5,7 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
-  modules: [
-    "@nuxtjs/tailwindcss",
-    "@nuxt/image",
-    "@nuxt/test-utils/module",
-    "vue-sonner/nuxt",
-  ],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/image", "@nuxt/test-utils/module", "vue-sonner/nuxt", "@nuxthub/core"],
 
   sourcemap: {
     server: true,
