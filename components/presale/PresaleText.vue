@@ -3,13 +3,11 @@
 </template>
 
 <script setup lang="ts">
-const title = "Lorem ipsum dolor sit amet consectetur";
+const title = "Vorverkauf - Tickets sichern!";
 
-const subtitle = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed dolores
-          eligendi nisi possimus porro similique quibusdam repellendus sint
-          sequi facere quia iste iusto, modi minus libero in hic aliquid
-          aliquam! Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Molestias ipsam facere optio inventore, amet quia cumque fugit
-          voluptatem asperiores architecto dignissimos magni expedita
-          repudiandae quibusdam, sunt aspernatur, odio in voluptates!`;
+const subtitle = `Bei unserem Vorverkauf können Sie Tickets vorbestellen und sich damit einen Platz in unseren legendären Vorstellungen sichern.
+ Diese Tickets müssen min. 90 Minuten vor Vorstellungsbeginn an der Kasse abgeholt werden. 
+ Zusätzlich halten wir allerdings auch Tickets an der Tageskasse für Sie bereit.
+ Wir freuen uns auf Ihren Besuch!
+  `;
 </script>

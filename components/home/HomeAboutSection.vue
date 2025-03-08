@@ -5,18 +5,19 @@
     >
       <div class="font-light text-gray-500 sm:text-lg">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">
-          We didn't reinvent the wheel
+          Manege frei und herzlich willkommen!
         </h2>
         <p class="mb-4">
-          We are strategists, designers and developers. Innovators and problem
-          solvers. Small enough to be simple and quick, but big enough to
-          deliver the scope you want at the pace you need. Small enough to be
-          simple and quick, but big enough to deliver the scope you want at the
-          pace you need.
+          Vom 18.7. bis zum 27.7.25 ist es wieder so weit: Zum 11. Mal heißt es
+          nun schon: Manege frei und herzlich willkommen im Circus St. Ottilien!
         </p>
         <p>
-          We are strategists, designers and developers. Innovators and problem
-          solvers. Small enough to be simple and quick.
+          Nach dreijähriger Pause lädt das Rhabanus-Maurus-Gymnasium in St.
+          Ottilien erneut zu seinem einzigartigen Schul- und Klostercircus ein.
+          Auch in seiner elften Auflage begeistert unsere Schule mit
+          beeindruckenden Darbietungen wie Boden- und Luftakrobatik, Jonglage,
+          Clownerie und vielem mehr. Zusätzlich erwarten Sie Bewirtung und
+          Unterhaltung auf unserem Jahrmarkt. Wir freuen uns auf euch!
         </p>
       </div>
       <div class="grid grid-cols-2 gap-4 mt-8">
