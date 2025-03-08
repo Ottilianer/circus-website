@@ -125,9 +125,7 @@
     },
     "passwordAuth": {
       "enabled": true,
-      "identityFields": [
-        "email"
-      ]
+      "identityFields": ["email"]
     },
     "mfa": {
       "enabled": false,
@@ -346,10 +344,7 @@
     },
     "passwordAuth": {
       "enabled": true,
-      "identityFields": [
-        "email",
-        "username"
-      ]
+      "identityFields": ["email", "username"]
     },
     "mfa": {
       "enabled": false,
@@ -846,10 +841,7 @@
         "id": "file3309110367",
         "maxSelect": 1,
         "maxSize": 0,
-        "mimeTypes": [
-          "image/png",
-          "image/jpeg"
-        ],
+        "mimeTypes": ["image/png", "image/jpeg"],
         "name": "image",
         "presentable": false,
         "protected": false,
@@ -879,9 +871,7 @@
         "type": "autodate"
       }
     ],
-    "indexes": [
-      "CREATE INDEX `idx_zk3ViqNeyu` ON `circus_acts` (`title`)"
-    ],
+    "indexes": ["CREATE INDEX `idx_zk3ViqNeyu` ON `circus_acts` (`title`)"],
     "system": false
   },
   {
@@ -913,10 +903,7 @@
         "id": "file3309110367",
         "maxSelect": 1,
         "maxSize": 0,
-        "mimeTypes": [
-          "image/png",
-          "image/jpeg"
-        ],
+        "mimeTypes": ["image/png", "image/jpeg"],
         "name": "image",
         "presentable": false,
         "protected": false,
@@ -1037,9 +1024,7 @@
         "type": "autodate"
       }
     ],
-    "indexes": [
-      "CREATE UNIQUE INDEX `idx_AeDY8Hb` ON `performances` (`date`)"
-    ],
+    "indexes": ["CREATE UNIQUE INDEX `idx_AeDY8Hb` ON `performances` (`date`)"],
     "system": false
   },
   {
