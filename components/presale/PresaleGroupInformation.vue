@@ -66,7 +66,8 @@ const steps = ref([
   {
     id: 2,
     title: "Formular ausfüllen",
-    description: "Füllen Sie das Formular vollständig aus",
+    description:
+      "Füllen Sie das Formular mit allen benötigten Angaben vollständig aus.",
     icon: Pen,
   },
   {
