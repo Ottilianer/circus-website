@@ -103,7 +103,7 @@
         <input type="checkbox" id="terms-checkbox" required />
         <label for="terms-checkbox" class="select-none"
           >Ich habe die
-          <NuxtLink to="/circus/presale-conditions" target="_blank" class="link"
+          <NuxtLink to="/legal/presale-conditions" target="_blank" class="link"
             >Vorverkaufsbedingungen</NuxtLink
           >
           gelesen und akzeptiere diese.</label
