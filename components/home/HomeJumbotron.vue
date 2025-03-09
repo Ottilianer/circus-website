@@ -1,21 +1,13 @@
 <template>
   <section class="image-container">
     <div
-      class="bg-gradient-to-tr from-blue-900 to-blue-400 w-full h-16 text-white flex items-center justify-center"
-    >
-      <p>
-        Unsere Webseite befindet sich im Aufbau. In Kürze sind hier alle
-        Informationen verfügbar.
-      </p>
-    </div>
-    <!-- <div
-      class="bg-gradient-to-tr from-primary to-red-600 w-full h-16 text-white flex items-center justify-center"
+      class="bg-primary w-full h-16 text-white flex items-center justify-center px-8 py-12 md:py-0 text-center"
     >
       <p>
         Sichern Sie sich jetzt Ihren Platz im Circuszelt. Tickets gibt es ab
         sofort im Vorverkauf!
       </p>
-    </div> -->
+    </div>
 
     <div
       class="px-4 mx-auto max-w-screen-xl text-center flex flex-col items-center justify-center py-24 lg:py-56 text-white"
