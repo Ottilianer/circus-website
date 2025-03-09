@@ -22,14 +22,14 @@
       </div>
       <div class="grid grid-cols-2 gap-4 mt-8">
         <img
-          class="w-full rounded-lg"
-          src="/media/images/placeholder-vertical_2.jpg"
-          alt="office content 1"
+          class="w-full rounded-lg mt-10"
+          src="/media/images/about_1.jpg"
+          alt="Person die eine brennende Fackel schwinkt"
         />
         <img
-          class="mt-4 w-full lg:mt-10 rounded-lg"
-          src="/media/images/placeholder-vertical_2.jpg"
-          alt="office content 2"
+          class="w-full rounded-lg"
+          src="/media/images/about_2.jpg"
+          alt="Zwei Personen bei der Luftakrobatik"
         />
       </div>
     </div>

@@ -39,8 +39,6 @@
 </template>
 
 <script lang="ts" setup>
-import { X } from "lucide-vue-next";
-
 const targetDate = new Date("2025-07-18T18:00:00+01:00");
 const now = ref<Date>(new Date());
 const intervalId = ref<NodeJS.Timeout | null>(null);
