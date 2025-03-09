@@ -17,7 +17,7 @@ routerAdd(
     const message = new MailerMessage({
       from: {
         name: "Circus St. Ottilien",
-        email: "no-reply@circus.ottilien.de",
+        email: "no-reply@circus.ottilianer.de",
       },
       to: [
         {
