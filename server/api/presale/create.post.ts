@@ -19,6 +19,10 @@ export default defineEventHandler(async (event) => {
     expiresIn: "24h",
   });
 
+  return {
+    nuxt: process.env.NUXT_ADDRESS as string,
+  };
+
   const template = await new Template("presale-verify-email.html", {
     name: presale.name,
     code: code,
