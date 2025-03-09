@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
   const template = await new Template("presale-verify-email.html", {
     name: presale.name,
     code: code,
-    domain: process.env.NUXT_URL as string,
+    domain: process.env.NUXT_ADDRESS as string,
     currentYear: new Date().getFullYear().toString(),
   }).load();
 

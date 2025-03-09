@@ -53,7 +53,7 @@ export default defineEventHandler(async (event) => {
       const template = await new Template("presale-ticket-email.html", {
         name: name,
         code: code,
-        domain: process.env.NUXT_URL as string,
+        domain: process.env.NUXT_ADDRESS as string,
         currentYear: new Date().getFullYear().toString(),
         minutesBeforePerformance:
           process.env.PRESALE_MINUTES_BEFORE_PERFORMANCE ?? "30",
