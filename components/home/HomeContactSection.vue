@@ -1,5 +1,5 @@
 <template>
-  <section id="contact">
+  <section>
     <div class="bg-white pt-20 pb-10 lg:pt-[110px] lg:pb-[70px]">
       <div class="container mx-auto">
         <div
@@ -24,7 +24,7 @@
               </div>
             </div>
           </div>
-          <div class="w-full">
+          <div class="w-full" id="contact">
             <div class="mb-10 text-center flex flex-col items-center">
               <div
                 class="mx-auto mb-5 flex items-center justify-center rounded-full bg-gray-50 text-primary p-8"
