@@ -25,6 +25,18 @@
             >
               <img :src="social.icon" :alt="social.alt" class="w-8 h-auto" />
             </NuxtLink>
+            <NuxtLink
+              key="ottilianer"
+              to="https://ottilianer.de"
+              target="_blank"
+              class="hover:-translate-y-1 transform transition-transform bg-gray-700 rounded-full flex items-center justify-center w-7 h-7 mt-0.5"
+            >
+              <img
+                src="/media/logos/ottilianer.svg"
+                alt="Logo der Schule"
+                class="w-5 h-auto"
+              />
+            </NuxtLink>
           </div>
         </div>
         <hr />
