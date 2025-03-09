@@ -1,6 +1,7 @@
 import { z } from "zod";
 import jwt from "jsonwebtoken";
 import { sendMail } from "~/server/utils/mail";
+import { Template } from "~/server/utils/templating";
 
 const CreatePresaleObject = z.object({
   // Name must be like "John Doe"
