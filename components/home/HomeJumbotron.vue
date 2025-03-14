@@ -16,7 +16,9 @@
       <h1
         class="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl"
       >
-        Willkommen beim Circus St.&nbsp;Ottilien!
+        <p>Herzlich Willkommen</p>
+        <p class="text-4xl">zum</p>
+        <p>Circus St.&nbsp;Ottilien 2025!</p>
       </h1>
       <ClientOnly>
         <div v-if="!isExpired" class="grid grid-cols-4 gap-4">
