@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
         discountCards: dc,
         performanceId: pi,
       },
-    } = (await verifyToken(code)) as {
+    } = (await verifyToken(code, useRuntimeConfig().secretKey)) as {
       data: any;
     };
     name = n;
@@ -49,13 +49,21 @@ export default defineEventHandler(async (event) => {
         .collection("performances")
         .getOne(performance_id)) as CircusPerformance;
 
+      const {
+        presaleDiscountPrice,
+        presaleMinutesBeforePerformance,
+        presaleRegularPrice,
+        presaleSpecialDiscountPrice,
+        presaleSpecialRegularPrice,
+      } = useRuntimeConfig().public;
+
       const template = await new Template("presale-ticket-email.html", {
         name: name,
         code: code,
-        domain: process.env.NUXT_ADDRESS as string,
+        domain: useRuntimeConfig().public.nuxtAddress,
         currentYear: new Date().getFullYear().toString(),
         minutesBeforePerformance:
-          process.env.PRESALE_MINUTES_BEFORE_PERFORMANCE ?? "30",
+          useRuntimeConfig().public.presaleMinutesBeforePerformance ?? "60",
         performanceDate: new Date(performance.date).toLocaleDateString("de-DE"),
         performanceTime: new Date(performance.date).toLocaleTimeString("de-DE"),
         regularCards: regular_cards,
@@ -63,14 +71,14 @@ export default defineEventHandler(async (event) => {
         regularCardsTotal: String(
           regular_cards *
             (performance.specialPerformance
-              ? Number(process.env.PRESALE_SPECIAL_REGULAR_PRICE) || 0
-              : Number(process.env.PRESALE_REGULAR_PRICE) || 0)
+              ? Number(presaleSpecialRegularPrice) || 0
+              : Number(presaleRegularPrice) || 0)
         ),
         discountCardsTotal: String(
           discount_cards *
             (performance.specialPerformance
-              ? Number(process.env.PRESALE_SPECIAL_DISCOUNT_PRICE) || 0
-              : Number(process.env.PRESALE_DISCOUNT_PRICE) || 0)
+              ? Number(presaleSpecialDiscountPrice) || 0
+              : Number(presaleDiscountPrice) || 0)
         ),
       }).load();
 

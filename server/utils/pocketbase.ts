@@ -1,10 +1,15 @@
 import PocketBase from "pocketbase";
 
 export async function getPocketbase() {
-  const pocketbase = new PocketBase(process.env.POCKETBASE_ADDRESS ?? "");
-  await pocketbase.admins.authWithPassword(
-    process.env.POCKETBASE_ADMIN_USER ?? "",
-    process.env.POCKETBASE_ADMIN_PASSWORD ?? ""
-  );
+  const {
+    pocketbaseAdminPassword,
+    pocketbaseAdminUser,
+    public: { pocketbaseAddress },
+  } = useRuntimeConfig();
+
+  const pocketbase = new PocketBase(pocketbaseAddress ?? "");
+  await pocketbase
+    .collection("_superusers")
+    .authWithPassword(pocketbaseAdminUser, pocketbaseAdminPassword);
   return pocketbase;
 }

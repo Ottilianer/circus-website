@@ -20,12 +20,18 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      pocketbaseAddress: "", // will be replaced by NUXT_PUBLIC_POCKETBASE_ADDRESS
-      presaleSpecialRegularPrice: "", // will be replaced by NUXT_PUBLIC_PRESALE_SPECIAL_REGULAR_PRICE
-      presaleSpecialDiscountPrice: "", // will be replaced by NUXT_PUBLIC_PRESALE_SPECIAL_DISCOUNT_PRICE
-      presaleRegularPrice: "", // will be replaced by NUXT_PUBLIC_PRESALE_REGULAR_PRICE
-      presaleDiscountPrice: "", // will be replaced by NUXT_PUBLIC_PRESALE_DISCOUNT_PRICE
+      pocketbaseAddress: "",
+      presaleSpecialRegularPrice: "",
+      presaleSpecialDiscountPrice: "",
+      presaleRegularPrice: "",
+      presaleDiscountPrice: "",
+      presaleMinutesBeforePerformance: "",
+      nuxtAddress: "",
     },
+
+    secretKey: "",
+    pocketbaseAdminUser: "",
+    pocketbaseAdminPassword: "",
   },
 
   components: [{ path: "~/components", pathPrefix: false }],

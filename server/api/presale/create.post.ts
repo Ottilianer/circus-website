@@ -15,12 +15,15 @@ const CreatePresaleObject = z.object({
 export default defineEventHandler(async (event) => {
   const presale = validateZodSchema(CreatePresaleObject, await readBody(event));
 
-  const code = await createToken({ data: presale });
+  const code = await createToken(
+    { data: presale },
+    useRuntimeConfig().secretKey
+  );
 
   const template = await new Template("presale-verify-email.html", {
     name: presale.name,
     code: code,
-    domain: process.env.NUXT_ADDRESS as string,
+    domain: useRuntimeConfig().public.nuxtAddress,
     currentYear: new Date().getFullYear().toString(),
   }).load();
 

@@ -1,10 +1,10 @@
 import { JWTPayload, jwtVerify, SignJWT } from "jose";
 
-export async function verifyToken(token: string) {
+export async function verifyToken(token: string, secretKey: string) {
   try {
     const { payload } = await jwtVerify(
       token,
-      new TextEncoder().encode(process.env.SECRET_KEY as string)
+      new TextEncoder().encode(secretKey)
     );
     return payload;
   } catch (error) {
@@ -12,12 +12,12 @@ export async function verifyToken(token: string) {
   }
 }
 
-export async function createToken(payload: JWTPayload) {
+export async function createToken(payload: JWTPayload, secretKey: string) {
   const token = await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
     .setExpirationTime("24h")
-    .sign(new TextEncoder().encode(process.env.SECRET_KEY as string));
+    .sign(new TextEncoder().encode(secretKey));
 
   console.log("JWT:", token);
   return token;
