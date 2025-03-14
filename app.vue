@@ -35,4 +35,10 @@ const clickCookieConsent = () => {
   localStorage.setItem("cookieConsent", "true");
   hidden.value = true;
 };
+
+onMounted(() => {
+  console.group("Debugging");
+  console.log(useRuntimeConfig().public);
+  console.groupEnd();
+});
 </script>
