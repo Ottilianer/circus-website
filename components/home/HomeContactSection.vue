@@ -3,7 +3,7 @@
     <div class="bg-white pt-20 pb-10 lg:pt-[110px] lg:pb-[70px]">
       <div class="container mx-auto">
         <div
-          class="grid lg:grid-cols-3 grid-rows-3 md:grid-rows-1 gap-4 lg:gap-8 text-center"
+          class="grid lg:grid-cols-2 grid-rows-2 md:grid-rows-1 gap-4 lg:gap-8 text-center"
         >
           <div class="w-full">
             <div class="mb-10 text-center flex flex-col items-center">
@@ -24,7 +24,7 @@
               </div>
             </div>
           </div>
-          <div class="w-full" id="contact">
+          <!-- <div class="w-full" id="contact">
             <div class="mb-10 text-center flex flex-col items-center">
               <div
                 class="mx-auto mb-5 flex items-center justify-center rounded-full bg-gray-50 text-primary p-8"
@@ -41,7 +41,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="w-full">
             <div class="mb-10 text-center flex flex-col items-center">
               <div
