@@ -1,7 +1,8 @@
 import PocketBase from "pocketbase";
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const pb = new PocketBase(useRuntimeConfig().public.POCKETBASE_ADDRESS);
+  const { pocketbaseAddress } = useRuntimeConfig().public;
+  const pb = new PocketBase(pocketbaseAddress as string);
   pb.autoCancellation(false);
   return {
     provide: {
