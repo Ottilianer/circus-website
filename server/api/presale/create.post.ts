@@ -14,7 +14,7 @@ const CreatePresaleObject = z.object({
 
 export default defineEventHandler(async (event) => {
   const presale = validateZodSchema(CreatePresaleObject, await readBody(event));
-
+  console.log("secretKey", useRuntimeConfig().secretKey);
   const code = await createToken(
     { data: presale },
     useRuntimeConfig().secretKey
