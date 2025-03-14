@@ -1,7 +1,7 @@
 import { z } from "zod";
-
-import jwt from "jsonwebtoken";
+import * as jose from "jose";
 import { CircusPerformance, CircusPresale } from "~/shared/types/presales";
+import { verifyToken } from "~/server/utils/encryption";
 
 const VerifyPresaleObject = z.object({
   code: z.string(),
@@ -13,7 +13,6 @@ export default defineEventHandler(async (event) => {
     await readBody(event)
   );
 
-  let presale;
   let name, email, regular_cards, discount_cards, performance_id;
   try {
     const {
@@ -24,7 +23,7 @@ export default defineEventHandler(async (event) => {
         discountCards: dc,
         performanceId: pi,
       },
-    } = jwt.verify(code, process.env.SECRET_KEY as string) as {
+    } = (await verifyToken(code)) as {
       data: any;
     };
     name = n;

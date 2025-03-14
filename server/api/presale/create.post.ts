@@ -1,7 +1,7 @@
 import { z } from "zod";
-import jwt from "jsonwebtoken";
 import { sendMail } from "~/server/utils/mail";
 import { Template } from "~/server/utils/templating";
+import { createToken } from "~/server/utils/encryption";
 
 const CreatePresaleObject = z.object({
   // Name must be like "John Doe"
@@ -15,13 +15,7 @@ const CreatePresaleObject = z.object({
 export default defineEventHandler(async (event) => {
   const presale = validateZodSchema(CreatePresaleObject, await readBody(event));
 
-  const code = jwt.sign({ data: presale }, process.env.SECRET_KEY as string, {
-    expiresIn: "24h",
-  });
-
-  return {
-    nuxt: process.env.NUXT_ADDRESS as string,
-  };
+  const code = await createToken({ data: presale });
 
   const template = await new Template("presale-verify-email.html", {
     name: presale.name,

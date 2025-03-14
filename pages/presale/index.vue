@@ -4,7 +4,7 @@
     <hr />
     <PresaleGroupInformation />
     <hr />
-    <PresaleSorry />
+    <PresaleForm />
   </div>
 </template>
 
